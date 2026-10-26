@@ -1,1248 +1,291 @@
-<!--
-  Module Name: Enterprise Pricing & Financial Intelligence Engine (EPFIE)
-  Project: Twenty Integration Hub - Tecniempack CRM
-  File: oilus_dollar.html
-  Version: 1.8.1 (Incluye Guía de Margen vs Utilidad B2B)
-  Minified: No
-  Generated: 2026-10-25 08:35:00 UTC
-  Author: Enter Solutions S.A.S.
--->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Twenty CRM - EPFIE Widget v1.8.1</title>
-  <style>
-    :root {
-      --bg-primary: #121826;
-      --bg-card: #1b2333;
-      --bg-input: #0f141d;
-      --border-color: #2b3548;
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --accent: #3b82f6;
-      --accent-hover: #2563eb;
-      --green: #10b981;
-      --red: #ef4444;
-      --purple: #8b5cf6;
-      --amber: #f59e0b;
-      --azul-tecno: #003366;
-      --verde-eco: #28a745;
-      --gris-claro: #e2e8f0;
-    }
-
-    body {
-      margin: 0;
-      padding: 16px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-main);
-      box-sizing: border-box;
-    }
-
-    .container {
-      max-width: 840px;
-      margin: 0 auto;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    }
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 12px;
-      margin-bottom: 16px;
-    }
-
-    .header h2 {
-      margin: 0;
-      font-size: 16px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .context-tag {
-      font-size: 11px;
-      background: rgba(59, 130, 246, 0.15);
-      color: var(--accent);
-      padding: 2px 8px;
-      border-radius: 4px;
-      border: 1px solid rgba(59, 130, 246, 0.3);
-    }
-
-    .tabs {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 16px;
-      border-bottom: 1px solid var(--border-color);
-      overflow-x: auto;
-    }
-
-    .tab-btn {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      padding: 8px 12px;
-      font-size: 12px;
-      font-weight: 500;
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-
-    .tab-btn.active {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .card {
-      background: var(--bg-input);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 12px;
-    }
-
-    .card-title {
-      font-size: 11px;
-      color: var(--text-muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-    }
-
-    .badge {
-      font-size: 10px;
-      padding: 1px 5px;
-      border-radius: 4px;
-      font-weight: 600;
-    }
-
-    .badge-green { background: rgba(16, 185, 129, 0.15); color: var(--green); }
-    .badge-red { background: rgba(239, 68, 68, 0.15); color: var(--red); }
-    .badge-purple { background: rgba(139, 92, 246, 0.15); color: var(--purple); }
-    .badge-amber { background: rgba(245, 158, 11, 0.15); color: var(--amber); }
-
-    .card-value {
-      font-size: 20px;
-      font-weight: 700;
-      margin: 8px 0 4px 0;
-    }
-
-    .card-sub {
-      font-size: 10px;
-      color: var(--text-muted);
-    }
-
-    .section-title {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--accent);
-      margin: 16px 0 8px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .projection-row {
-      background: rgba(139, 92, 246, 0.05);
-      border: 1px dashed rgba(139, 92, 246, 0.3);
-      border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 12px;
-    }
-
-    .unified-row {
-      background: rgba(245, 158, 11, 0.05);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      border-radius: 8px;
-      padding: 10px 12px;
-      margin-bottom: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .calculator-box {
-      background: var(--bg-input);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 14px;
-      margin-bottom: 16px;
-    }
-
-    .impact-box {
-      background: rgba(16, 185, 129, 0.03);
-      border: 1px solid rgba(16, 185, 129, 0.2);
-      border-radius: 8px;
-      padding: 14px;
-      margin-bottom: 16px;
-    }
-
-    .recommendation-box {
-      background: rgba(59, 130, 246, 0.05);
-      border-left: 4px solid var(--accent);
-      border-radius: 4px;
-      padding: 12px 14px;
-      margin-bottom: 16px;
-    }
-
-    .input-group {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .input-group label {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    input, select {
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 8px;
-      border-radius: 6px;
-      font-size: 13px;
-      outline: none;
-    }
-
-    input:focus, select:focus {
-      border-color: var(--accent);
-    }
-
-    .result-box {
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid var(--border-color);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .result-label {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .result-val-usd {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--green);
-      text-align: right;
-    }
-
-    .result-val-cop {
-      font-size: 11px;
-      color: var(--text-muted);
-      text-align: right;
-    }
-
-    .result-val-fut {
-      font-size: 11px;
-      color: var(--purple);
-      text-align: right;
-      margin-top: 2px;
-    }
-
-    /* ESTILOS TABLAS CATEGORIZADAS */
-    .group-header {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--amber);
-      background: rgba(245, 158, 11, 0.1);
-      padding: 6px 10px;
-      border-radius: 6px 6px 0 0;
-      margin-top: 12px;
-      border: 1px solid rgba(245, 158, 11, 0.2);
-      border-bottom: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .comp-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 11px;
-      margin-bottom: 12px;
-      border: 1px solid var(--border-color);
-    }
-
-    .comp-table th, .comp-table td {
-      padding: 7px 9px;
-      text-align: left;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .comp-table th {
-      background: var(--bg-input);
-      color: var(--text-muted);
-      font-weight: 600;
-      font-size: 10px;
-    }
-
-    .benchmark-row {
-      background: rgba(16, 185, 129, 0.06);
-    }
-
-    .badge-bm {
-      font-size: 9px;
-      background: rgba(16, 185, 129, 0.25);
-      color: var(--green);
-      padding: 1px 4px;
-      border-radius: 3px;
-      font-weight: 700;
-      margin-left: 4px;
-      border: 1px solid rgba(16, 185, 129, 0.4);
-    }
-
-    /* BLOQUE EXPLICATIVO MARGEN VS UTILIDAD */
-    .explain-block {
-      background: var(--bg-input);
-      border: 1px solid var(--border-color);
-      border-left: 4px solid var(--verde-eco);
-      border-radius: 8px;
-      padding: 16px;
-      margin-top: 20px;
-    }
-
-    .explain-header {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .explain-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .explain-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 10px 12px;
-    }
-
-    .explain-card h5 {
-      margin: 0 0 6px 0;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .explain-card p {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin: 0 0 6px 0;
-      line-height: 1.4;
-    }
-
-    .formula-tag {
-      font-family: monospace;
-      font-size: 10px;
-      background: rgba(0, 0, 0, 0.3);
-      color: var(--amber);
-      padding: 3px 6px;
-      border-radius: 4px;
-      display: inline-block;
-    }
-
-    .cta-box {
-      margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px border-dashed var(--border-color);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .cta-btn {
-      background: var(--verde-eco);
-      color: #ffffff;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 8px 14px;
-      border-radius: 6px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: background 0.2s;
-    }
-
-    .cta-btn:hover {
-      background: #218838;
-    }
-
-    .footer-status {
-      margin-top: 16px;
-      font-size: 10px;
-      color: var(--text-muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--green);
-      border-radius: 50%;
-      display: inline-block;
-      margin-right: 4px;
-    }
-
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-  </style>
-</head>
-<body>
-
-  <div class="container">
-    <div class="header">
-      <h2>
-        <span>📊 EPFIE - Tecniempack Hub</span>
-      </h2>
-      <span class="context-tag" id="context-tag">Context ID: Company: N/A</span>
-    </div>
-
-    <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('tab-monitor', this)">📈 Monitor Financiero</button>
-      <button class="tab-btn" onclick="switchTab('tab-catalogo', this)">📦 Catálogo Tecniempack</button>
-      <button class="tab-btn" onclick="switchTab('tab-benchmark', this)">⚔️ Benchmark Mercado</button>
-      <button class="tab-btn" onclick="switchTab('tab-crm', this)">🚀 Actualizar Twenty CRM</button>
-    </div>
-
-    <!-- TAB 1: MONITOR FINANCIERO Y PRICING TECNIEMPACK -->
-    <div id="tab-monitor" class="tab-content active">
-      
-      <!-- MERCADO EN VIVO -->
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-        <span style="font-size: 11px; color: var(--text-muted);"><span class="status-dot"></span>Mercado en Vivo</span>
-        <span style="font-size: 10px; color: var(--text-muted);">Actualizado: <span id="last-update">8:35:00 AM</span></span>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-title">WTI USOil <span class="badge badge-green">+0.00%</span></div>
-          <div class="card-value">$74.76 <span style="font-size:10px; color:var(--text-muted);">USD</span></div>
-          <div class="card-sub">Rango: $73.20 - $75.90</div>
-        </div>
-
-        <div class="card">
-          <div class="card-title">Brent Crude <span class="badge badge-green">+0.00%</span></div>
-          <div class="card-value">$78.25 <span style="font-size:10px; color:var(--text-muted);">USD</span></div>
-          <div class="card-sub">Rango: $77.10 - $79.25</div>
-        </div>
-
-        <div class="card">
-          <div class="card-title">TRM USD/COP <span class="badge badge-red">-0.00%</span></div>
-          <div class="card-value">$4.191,69 <span style="font-size:10px; color:var(--text-muted);">COP</span></div>
-          <div class="card-sub">Oficial Superfinanciera</div>
-        </div>
-      </div>
-
-      <!-- SECCIÓN PROYECCIÓN Y DÍAS -->
-      <div class="section-title">
-        <span>🔮 Proyección Futura Parametrizada</span>
-        <div style="display: flex; align-items: center; gap: 6px;">
-          <label for="proj-days" style="font-size: 11px; color: var(--text-muted);">Días a Proyectar:</label>
-          <input type="number" id="proj-days" value="7" min="1" max="365" style="width: 50px; padding: 3px 6px; text-align: center;" oninput="updateProjections()">
-        </div>
-      </div>
-
-      <!-- FILA DE FUTUROS DINÁMICA -->
-      <div class="projection-row">
-        <div class="grid-3">
-          <div>
-            <div class="card-title">WTI Futuro <span class="badge badge-purple" id="badge-wti-fut">+1.85%</span></div>
-            <div class="card-value" style="font-size:16px;" id="val-wti-fut">$76.14 <span style="font-size:9px; color:var(--text-muted);">USD</span></div>
-            <div class="card-sub" id="sub-wti-fut">Est. a 7 Días</div>
-          </div>
-
-          <div>
-            <div class="card-title">Brent Futuro <span class="badge badge-purple" id="badge-brent-fut">+1.60%</span></div>
-            <div class="card-value" style="font-size:16px;" id="val-brent-fut">$79.50 <span style="font-size:9px; color:var(--text-muted);">USD</span></div>
-            <div class="card-sub" id="sub-brent-fut">Est. a 7 Días</div>
-          </div>
-
-          <div>
-            <div class="card-title">TRM Proyectada <span class="badge badge-purple" id="badge-trm-fut">+0.42%</span></div>
-            <div class="card-value" style="font-size:16px;" id="val-trm-fut">$4.209,30 <span style="font-size:9px; color:var(--text-muted);">COP</span></div>
-            <div class="card-sub" id="sub-trm-fut">Est. a 7 Días</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- FILA DE VARIACIÓN UNIFICADA -->
-      <div class="unified-row">
-        <div>
-          <div style="font-size: 11px; font-weight: 600; color: var(--amber);">⚡ Variación Unificada Acumulada (Δ WTI × Δ TRM)</div>
-          <div style="font-size: 10px; color: var(--text-muted);" id="lbl-unified-formula">Fórmula: Δ WTI (%) × Δ USD/COP (%)</div>
-        </div>
-        <div style="text-align: right;">
-          <span class="badge badge-amber" id="val-unified-pct" style="font-size: 13px; padding: 4px 8px;">+0.7770%</span>
-        </div>
-      </div>
-
-      <!-- ESTIMADOR DE NEGOCIACIÓN BARRIL -->
-      <div class="calculator-box">
-        <div class="card-title" style="margin-bottom: 10px;">
-          <span>🧮 Estimador de Negociación (Commodity Base)</span>
-          <span style="font-size: 10px; color: var(--accent);">Conversión en tiempo real</span>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-          <div class="input-group">
-            <label for="bbl-volume">Volumen de Barriles (BBL)</label>
-            <input type="number" id="bbl-volume" value="1" min="1" oninput="calculateContract()">
-          </div>
-
-          <div class="input-group">
-            <label for="oil-ref">Referencia Preferida</label>
-            <select id="oil-ref" onchange="calculateContract()">
-              <option value="78.25" data-ref="brent" selected>Brent Crude</option>
-              <option value="74.76" data-ref="wti">WTI USOil</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="result-box">
-          <div class="result-label">Valor Estimado del Contrato:</div>
-          <div>
-            <div class="result-val-usd" id="res-usd">$78.25 USD</div>
-            <div class="result-val-cop" id="res-cop">≈ $327.999,74 COP (Spot)</div>
-            <div class="result-val-fut" id="res-fut">🔮 Proyección (7D): $79.50 USD (≈ $334.639,35 COP)</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CUADRO EXPLICATIVO: IMPACTO EN BOLSAS TECNIEMPACK -->
-      <div class="impact-box">
-        <div class="card-title" style="margin-bottom: 8px; color: var(--green);">
-          <span>📦 Impacto en Fijación de Precios de Venta (Bolsas Tecniempack)</span>
-          <span style="font-size: 10px; color: var(--text-muted);">Sensibilidad Resina PE / PP</span>
-        </div>
-        
-        <p style="font-size: 11px; color: var(--text-muted); margin: 0 0 10px 0; line-height: 1.4;">
-          Las resinas plásticas representan el <strong>65% del costo de estructura</strong> de las bolsas de Tecniempack. Su precio spot se cotiza en USD/Ton y correlaciona directamente con el WTI y el tipo de cambio USD/COP.
-        </p>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; background: var(--bg-input); padding: 10px; border-radius: 6px; border: 1px solid var(--border-color);">
-          <div>
-            <div style="font-size: 10px; color: var(--text-muted);">Costo Base Millar Bolsas (Spot):</div>
-            <div style="font-size: 14px; font-weight: 700; color: var(--text-main);" id="tec-base-price">$120.000 COP</div>
-          </div>
-          <div>
-            <div style="font-size: 10px; color: var(--text-muted);" id="tec-proj-label">Precio Proyectado Millar (7D):</div>
-            <div style="font-size: 14px; font-weight: 700; color: var(--amber);" id="tec-proj-price">$122.724 COP</div>
-          </div>
-        </div>
-
-        <div style="font-size: 10px; color: var(--text-muted); margin-top: 8px;" id="tec-impact-detail">
-          Ajuste Sugerido en Cotización: <strong>+2,27%</strong> (Translada +1,85% alza WTI +0,42% TRM sobre componente resina).
-        </div>
-      </div>
-
-      <!-- RECOMENDACIÓN ESTRATÉGICA FINAL -->
-      <div class="recommendation-box">
-        <div style="font-size: 11px; font-weight: 700; color: var(--accent); margin-bottom: 4px;">
-          💡 Recomendación Estratégica Comercial para Tecniempack
-        </div>
-        <p style="font-size: 11px; color: var(--text-main); margin: 0; line-height: 1.4;" id="rec-text">
-          Con una proyección a 7 días de variación alcista unificada (+0,7770%), se recomienda <strong>fijar vigencia de cotizaciones corporativas a un máximo de 5 días hábiles</strong> o incluir una cláusula de reajuste automático por variación de TRM/resina si la orden supera los $10.000 USD.
-        </p>
-      </div>
-
-    </div>
-
-    <!-- TAB 2: CATÁLOGO COMPLETO DE TECNIEMPACK CON MARGEN Y UTILIDAD -->
-    <div id="tab-catalogo" class="tab-content">
-      <div class="calculator-box" style="margin-bottom: 0;">
-        <div class="card-title" style="margin-bottom: 6px;">
-          <span>📋 Catálogo Oficial Tecniempack: Precios, Costos y Márgenes</span>
-          <span class="badge badge-green">Estructura Interna</span>
-        </div>
-        <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.3;">
-          Organizado por las 6 categorías principales de producto. Las métricas expresan el <strong>% Margen Costo/Precio</strong> frente al <strong>% de Utilidad / Markup</strong>.
-        </p>
-
-        <!-- CATEGORÍA 1: BOLSAS INDUSTRIALES DE POLIETILENO -->
-        <div class="group-header">
-          <span>1. BOLSAS INDUSTRIALES DE POLIETILENO (HDPE / LDPE / PP)</span>
-          <span style="font-weight: 400; font-size: 10px; color: var(--text-muted);">Línea Base Producción</span>
-        </div>
-        <table class="comp-table">
-          <thead>
-            <tr>
-              <th>Ref.</th>
-              <th>Artículo / Presentación</th>
-              <th>Precio Venta</th>
-              <th>Costo Est.</th>
-              <th>Margen (C/P)</th>
-              <th>% Utilidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>BOL-01</strong></td>
-              <td>Bolsa Camiseta Blanca 30x60 (Millar)</td>
-              <td>$85.000 COP</td>
-              <td>$59.500 COP</td>
-              <td><span class="badge badge-green">30.0%</span></td>
-              <td><span class="badge badge-purple">42.9%</span></td>
-            </tr>
-            <tr>
-              <td><strong>BOL-02</strong></td>
-              <td>Bolsa Troquelada Alta Densidad 25x35 (Millar)</td>
-              <td>$115.000 COP</td>
-              <td>$78.200 COP</td>
-              <td><span class="badge badge-green">32.0%</span></td>
-              <td><span class="badge badge-purple">47.1%</span></td>
-            </tr>
-            <tr>
-              <td><strong>BOL-03</strong></td>
-              <td>Bolsa Inocua Transparente LDPE 15x25 (Millar)</td>
-              <td>$92.000 COP</td>
-              <td>$62.560 COP</td>
-              <td><span class="badge badge-green">32.0%</span></td>
-              <td><span class="badge badge-purple">47.1%</span></td>
-            </tr>
-            <tr>
-              <td><strong>BOL-04</strong></td>
-              <td>Bolsa Cierre Adhesivo Solapa Calibre 2 (Millar)</td>
-              <td>$39.000 COP</td>
-              <td>$26.130 COP</td>
-              <td><span class="badge badge-green">33.0%</span></td>
-              <td><span class="badge badge-purple">49.3%</span></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- CATEGORÍA 2: PELÍCULA ESTIRABLE (STRETCH FILM) -->
-        <div class="group-header">
-          <span>2. PELÍCULA ESTIRABLE (STRETCH FILM / EMPLAYE)</span>
-          <span style="font-weight: 400; font-size: 10px; color: var(--text-muted);">Embalaje y Paletizado</span>
-        </div>
-        <table class="comp-table">
-          <thead>
-            <tr>
-              <th>Ref.</th>
-              <th>Artículo / Presentación</th>
-              <th>Precio Venta</th>
-              <th>Costo Est.</th>
-              <th>Margen (C/P)</th>
-              <th>% Utilidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>STR-01</strong></td>
-              <td>Stretch Film Transparente Manual 18" Cal. 60 (Rollo)</td>
-              <td>$32.000 COP</td>
-              <td>$23.040 COP</td>
-              <td><span class="badge badge-green">28.0%</span></td>
-              <td><span class="badge badge-purple">38.9%</span></td>
-            </tr>
-            <tr>
-              <td><strong>STR-02</strong></td>
-              <td>Stretch Film Negro Industrial 18" Cal. 70 (Rollo)</td>
-              <td>$35.000 COP</td>
-              <td>$24.850 COP</td>
-              <td><span class="badge badge-green">29.0%</span></td>
-              <td><span class="badge badge-purple">40.9%</span></td>
-            </tr>
-            <tr>
-              <td><strong>STR-03</strong></td>
-              <td>Stretch Film Automático Alto Rendimiento 20" (Rollo)</td>
-              <td>$88.000 COP</td>
-              <td>$62.480 COP</td>
-              <td><span class="badge badge-green">29.0%</span></td>
-              <td><span class="badge badge-purple">40.8%</span></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- CATEGORÍA 3: BOLSAS DE BASURA E INSTITUCIONALES (INCLUYE PCR / ECO) -->
-        <div class="group-header">
-          <span>3. BOLSAS DE BASURA INSTITUCIONALES (LÍNEA VERDE ECO / PCR)</span>
-          <span style="font-weight: 400; font-size: 10px; color: var(--text-muted);">Residuo y Sostenibilidad</span>
-        </div>
-        <table class="comp-table">
-          <thead>
-            <tr>
-              <th>Ref.</th>
-              <th>Artículo / Presentación</th>
-              <th>Precio Venta</th>
-              <th>Costo Est.</th>
-              <th>Margen (C/P)</th>
-              <th>% Utilidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>BAS-01</strong></td>
-              <td>Bolsa Opaca Despacho 23x32" Resina PCR (Millar)</td>
-              <td>$215.000 COP</td>
-              <td>$146.200 COP</td>
-              <td><span class="badge badge-green">32.0%</span></td>
-              <td><span class="badge badge-purple">47.1%</span></td>
-            </tr>
-            <tr>
-              <td><strong>BAS-02</strong></td>
-              <td>Bolsa Basura Negra Institucional 30x40 PCR (Millar)</td>
-              <td>$180.000 COP</td>
-              <td>$120.600 COP</td>
-              <td><span class="badge badge-green">33.0%</span></td>
-              <td><span class="badge badge-purple">49.3%</span></td>
-            </tr>
-            <tr>
-              <td><strong>BAS-03</strong></td>
-              <td>Bolsa Basura Paquete x10 unds (BBN22)</td>
-              <td>$3.500 COP</td>
-              <td>$2.275 COP</td>
-              <td><span class="badge badge-green">35.0%</span></td>
-              <td><span class="badge badge-purple">53.8%</span></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- CATEGORÍA 4: ROLLOS PARA EMPAQUE FLEXIBLE -->
-        <div class="group-header">
-          <span>4. ROLLOS PARA EMPAQUE FLEXIBLE (LÁMINAS Y EXTRUSIÓN)</span>
-          <span style="font-weight: 400; font-size: 10px; color: var(--text-muted);">Conversión e Impresión</span>
-        </div>
-        <table class="comp-table">
-          <thead>
-            <tr>
-              <th>Ref.</th>
-              <th>Artículo / Presentación</th>
-              <th>Precio Venta</th>
-              <th>Costo Est.</th>
-              <th>Margen (C/P)</th>
-              <th>% Utilidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>ROL-01</strong></td>
-              <td>Rollo Tubulada LDPE 40 cm Ancho (Kilo)</td>
-              <td>$12.500 COP</td>
-              <td>$8.625 COP</td>
-              <td><span class="badge badge-green">31.0%</span></td>
-              <td><span class="badge badge-purple">44.9%</span></td>
-            </tr>
-            <tr>
-              <td><strong>ROL-02</strong></td>
-              <td>Lámina Polipropileno PP Cristal Impresa (Kilo)</td>
-              <td>$16.800 COP</td>
-              <td>$11.256 COP</td>
-              <td><span class="badge badge-green">33.0%</span></td>
-              <td><span class="badge badge-purple">49.3%</span></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- CATEGORÍA 5: CINTAS DE EMBALAJE IMPRESAS Y ADHESIVAS -->
-        <div class="group-header">
-          <span>5. CINTAS DE EMBALAJE Y COMPLEMENTOS</span>
-          <span style="font-weight: 400; font-size: 10px; color: var(--text-muted);">Cierre y Sellado</span>
-        </div>
-        <table class="comp-table">
-          <thead>
-            <tr>
-              <th>Ref.</th>
-              <th>Artículo / Presentación</th>
-              <th>Precio Venta</th>
-              <th>Costo Est.</th>
-              <th>Margen (C/P)</th>
-              <th>% Utilidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>CIN-01</strong></td>
-              <td>Cinta Adhesiva Transparent/Canela 48mmx100m (Caja 36u)</td>
-              <td>$144.000 COP</td>
-              <td>$97.920 COP</td>
-              <td><span class="badge badge-green">32.0%</span></td>
-              <td><span class="badge badge-purple">47.1%</span></td>
-            </tr>
-            <tr>
-              <td><strong>CIN-02</strong></td>
-              <td>Cinta Impresa Personalizada Marca 48mmx100m (Caja 36u)</td>
-              <td>$210.000 COP</td>
-              <td>$136.500 COP</td>
-              <td><span class="badge badge-green">35.0%</span></td>
-              <td><span class="badge badge-purple">53.8%</span></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- CATEGORÍA 6: CONTENEDORES RÍGIDOS Y DESCARTABLES -->
-        <div class="group-header">
-          <span>6. CONTENEDORES RÍGIDOS Y DESCARTABLES INSTITUCIONALES</span>
-          <span style="font-weight: 400; font-size: 10px; color: var(--text-muted);">Vajilla y Alimentos</span>
-        </div>
-        <table class="comp-table">
-          <thead>
-            <tr>
-              <th>Ref.</th>
-              <th>Artículo / Presentación</th>
-              <th>Precio Venta</th>
-              <th>Costo Est.</th>
-              <th>Margen (C/P)</th>
-              <th>% Utilidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>DES-01</strong></td>
-              <td>Vaso Plástico Transparente 7 oz (Paquete 50u)</td>
-              <td>$4.200 COP</td>
-              <td>$2.814 COP</td>
-              <td><span class="badge badge-green">33.0%</span></td>
-              <td><span class="badge badge-purple">49.3%</span></td>
-            </tr>
-            <tr>
-              <td><strong>DES-02</strong></td>
-              <td>Contenedor Bisagra Térmico Rígido (Caja 100u)</td>
-              <td>$45.000 COP</td>
-              <td>$30.150 COP</td>
-              <td><span class="badge badge-green">33.0%</span></td>
-              <td><span class="badge badge-purple">49.3%</span></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- NUEVO MÓDULO EXPLICATIVO: USO E INTERPRETACIÓN DEL MARGEN Y LA UTILIDAD -->
-        <div class="explain-block">
-          <div class="explain-header">
-            <span>💡 Guía Estratégica: Uso e Interpretación Financiera de Métricas</span>
-            <span class="badge badge-green">Uso B2B</span>
-          </div>
-          
-          <div class="explain-grid">
-            <div class="explain-card">
-              <h5>1. % Margen Costo/Precio (Financiero)</h5>
-              <p>
-                Mide qué porcentaje del <strong>Precio de Venta final</strong> corresponde a la ganancia bruta de la empresa. Nunca puede superar el 100%.
-              </p>
-              <div class="formula-tag">Margen = [(Precio - Costo) / Precio] × 100</div>
-              <p style="margin-top: 6px; font-size: 10px;">
-                <strong>Uso en Tecniempack:</strong> Utilizado por la dirección financiera para validar la cobertura de costos fijos operativos sobre la facturación total tras variaciones en el dólar o resina.
-              </p>
-            </div>
-
-            <div class="explain-card">
-              <h5>2. % Utilidad / Markup (Comercial)</h5>
-              <p>
-                Mide el porcentaje de incremento sobre el <strong>Costo Estimado</strong> de producción para definir la tarifa de venta. Puede superar el 100%.
-              </p>
-              <div class="formula-tag">Utilidad = [(Precio - Costo) / Costo] × 100</div>
-              <p style="margin-top: 6px; font-size: 10px;">
-                <strong>Uso en Tecniempack:</strong> Utilizado por el equipo comercial y compras para recargar rápidamente el costo de reposición de la materia prima (PEBD/PEAD/PP).
-              </p>
-            </div>
-          </div>
-
-          <div style="font-size: 11px; color: var(--text-muted); line-height: 1.4; background: rgba(0,0,0,0.2); padding: 8px 10px; border-radius: 4px;">
-            <strong style="color: var(--amber);">⚠️ Alerta de Negociación Corporativa:</strong> 
-            Confundir un <i>Markup</i> del 30% con un <i>Margen</i> del 30% genera pérdidas. Aplicar un 30% sobre un costo de $100.000 fijará el precio en $130.000, generando un margen real de apenas <strong>23,07%</strong>, lo que expone el contrato ante la volatilidad de la TRM.
-          </div>
-
-          <div class="cta-box">
-            <span style="font-size: 11px; color: var(--text-muted);">¿Requiere estructurar ofertas corporativas personalizadas con protección de margen?</span>
-            <a href="https://wa.me/573165028834?text=Hola,%20deseo%20recibir%20asesoria%20tecnica%20para%20analizar%20requerimientos%20y%20margenes%20de%20empaque." target="_blank" class="cta-btn">
-              <span>Solicitar Asesoría Técnica</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- TAB 3: BENCHMARK DE MERCADO AMPLIO POR GRUPOS -->
-    <div id="tab-benchmark" class="tab-content">
-      <div class="calculator-box" style="margin-bottom: 0;">
-        <div class="card-title" style="margin-bottom: 6px;">
-          <span>⚔️ Benchmark de Mercado: Tecniempack vs. Competidores</span>
-          <span class="badge badge-purple">Comparativa por Grupos</span>
-        </div>
-        <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.3;">
-          Se marcan los productos referencia de Tecniempack como <span class="badge-bm">PROD-BENCHMARK</span> para calcular el <i>Spread %</i> frente a alternativas de mercado a precio por Millar (1.000 unds).
-        </p>
-
-        <!-- GRUPO 1: ALTA DENSIDAD (HDPE) -->
-        <div class="group-header">
-          <span>1. POLIETILENO DE ALTA DENSIDAD (HDPE)</span>
-          <span style="font-weight: 400; font-size: 10px; color: var(--text-muted);">Retail, Camiseta, Alta Resistencia</span>
-        </div>
-        <table class="comp-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Producto / Descripción</th>
-              <th>Origen / Proveedor</th>
-              <th>Precio Millar</th>
-              <th>Spread %</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="benchmark-row">
-              <td><strong>HDPE-01</strong></td>
-              <td>Bolsa Camiseta Blanca 30x60 <span class="badge-bm">PROD-BENCHMARK</span></td>
-              <td><strong>Tecniempack S.A.S.</strong></td>
-              <td><strong>$85.000 COP</strong></td>
-              <td><span class="badge badge-green">Línea Base</span></td>
-            </tr>
-            <tr>
-              <td>HDPE-02</td>
-              <td>Bolsa Camiseta Genérica 30x60 (Pack 100u x10)</td>
-              <td>Bolsas y Empaques Col.</td>
-              <td>$108.000 COP</td>
-              <td><span class="badge badge-red">+27.0%</span></td>
-            </tr>
-            <tr class="benchmark-row">
-              <td><strong>HDPE-03</strong></td>
-              <td>Bolsa Troquelada Alta Densidad 25x35 <span class="badge-bm">PROD-BENCHMARK</span></td>
-              <td><strong>Tecniempack S.A.S.</strong></td>
-              <td><strong>$115.000 COP</strong></td>
-              <td><span class="badge badge-green">Línea Base</span></td>
-            </tr>
-            <tr>
-              <td>HDPE-04</td>
-              <td>Bolsa Troquel Manija 25x35 Comercial</td>
-              <td>Distribuidor Local</td>
-              <td>$142.000 COP</td>
-              <td><span class="badge badge-red">+23.4%</span></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- GRUPO 2: BAJA DENSIDAD (LDPE) -->
-        <div class="group-header">
-          <span>2. POLIETILENO DE BAJA DENSIDAD (LDPE)</span>
-          <span style="font-weight: 400; font-size: 10px; color: var(--text-muted);">Alimentos, Inocuidad, Transparencia</span>
-        </div>
-        <table class="comp-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Producto / Descripción</th>
-              <th>Origen / Proveedor</th>
-              <th>Precio Millar</th>
-              <th>Spread %</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="benchmark-row">
-              <td><strong>LDPE-01</strong></td>
-              <td>Bolsa Transparente Inocua 15x25 Cal 1.5 <span class="badge-bm">PROD-BENCHMARK</span></td>
-              <td><strong>Tecniempack S.A.S.</strong></td>
-              <td><strong>$92.000 COP</strong></td>
-              <td><span class="badge badge-green">Línea Base</span></td>
-            </tr>
-            <tr>
-              <td>LDPE-02</td>
-              <td>Bolsa Baja Densidad Transparente 100u ($11.000)</td>
-              <td>Bolsas y Empaques Col.</td>
-              <td>$110.000 COP</td>
-              <td><span class="badge badge-red">+19.5%</span></td>
-            </tr>
-            <tr class="benchmark-row">
-              <td><strong>LDPE-03</strong></td>
-              <td>Bolsa Adhesiva Solapa Calibre 2 <span class="badge-bm">PROD-BENCHMARK</span></td>
-              <td><strong>Tecniempack S.A.S.</strong></td>
-              <td><strong>$39.000 COP</strong></td>
-              <td><span class="badge badge-green">Línea Base</span></td>
-            </tr>
-            <tr>
-              <td>LDPE-04</td>
-              <td>Bolsa Cierre Adhesivo 100u ($4.800)</td>
-              <td>Bolsas y Empaques Col.</td>
-              <td>$48.000 COP</td>
-              <td><span class="badge badge-red">+23.0%</span></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- GRUPO 3: MATERIA PRIMA REUTILIZADA (PCR / RECICLADO / LÍNEA VERDE ECO) -->
-        <div class="group-header">
-          <span>3. MATERIA PRIMA REUTILIZADA / RECICLADA (PCR - LÍNEA VERDE ECO)</span>
-          <span style="font-weight: 400; font-size: 10px; color: var(--text-muted);">Residuos, Despachos Opacos, Economía Circular</span>
-        </div>
-        <table class="comp-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Producto / Descripción</th>
-              <th>Origen / Proveedor</th>
-              <th>Precio Millar</th>
-              <th>Spread %</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="benchmark-row">
-              <td><strong>PCR-01</strong></td>
-              <td>Bolsa Opaca Despacho 23x32" Resina PCR <span class="badge-bm">PROD-BENCHMARK</span></td>
-              <td><strong>Tecniempack S.A.S.</strong></td>
-              <td><strong>$215.000 COP</strong></td>
-              <td><span class="badge badge-green">Línea Base</span></td>
-            </tr>
-            <tr>
-              <td>PCR-02</td>
-              <td>Bolsa Despacho Mensajería 23x32" (100u)</td>
-              <td>Bolsas y Empaques Col.</td>
-              <td>$272.000 COP</td>
-              <td><span class="badge badge-red">+26.5%</span></td>
-            </tr>
-            <tr class="benchmark-row">
-              <td><strong>PCR-03</strong></td>
-              <td>Bolsa Basura Negra Institucional 30x40 PCR <span class="badge-bm">PROD-BENCHMARK</span></td>
-              <td><strong>Tecniempack S.A.S.</strong></td>
-              <td><strong>$180.000 COP</strong></td>
-              <td><span class="badge badge-green">Línea Base</span></td>
-            </tr>
-            <tr>
-              <td>PCR-04</td>
-              <td>Bolsa Negra Residuos Pesados Paq x100</td>
-              <td>Mercado Mayorista</td>
-              <td>$220.000 COP</td>
-              <td><span class="badge badge-red">+22.2%</span></td>
-            </tr>
-          </tbody>
-        </table>
-
-      </div>
-    </div>
-
-    <!-- TAB 4: ACTUALIZAR TWENTY CRM -->
-    <div id="tab-crm" class="tab-content">
-      <div class="calculator-box">
-        <div class="card-title" style="margin-bottom: 12px;">📤 Webhook Sync hacia Twenty CRM / n8n</div>
-        
-        <div class="input-group" style="margin-bottom: 10px;">
-          <label>URL del Webhook Target</label>
-          <input type="text" id="webhook-url" value="https://httpbin.org/post">
-        </div>
-
-        <div class="input-group" style="margin-bottom: 10px;">
-          <label>Notas de la Negociación</label>
-          <input type="text" id="sync-notes" placeholder="Ej: Cotización analizada con protección de margen según v1.8.1">
-        </div>
-
-        <button onclick="sendWebhook()" style="width:100%; background:var(--accent); color:white; border:none; padding:10px; border-radius:6px; font-weight:600; cursor:pointer; margin-top:8px;">
-          Enviar Datos a Twenty CRM
-        </button>
-
-        <div id="webhook-response" style="margin-top:12px; font-size:11px; background:var(--bg-primary); padding:8px; border-radius:6px; display:none; white-space:pre-wrap; max-height:120px; overflow-y:auto; border:1px solid var(--border-color);"></div>
-      </div>
-    </div>
-
-    <div class="footer-status">
-      <span>🔗 Ready for Twenty Iframe Context</span>
-      <span>v1.8.1 • Full Catalog & Consultative Margin Engine</span>
-    </div>
-
-  </div>
-
-  <script>
-    // Valores Spot Base
-    const WTI_SPOT = 74.76;
-    const BRENT_SPOT = 78.25;
-    const TRM_SPOT = 4191.69;
-    const TEC_MILLAR_BASE_COP = 120000;
-
-    // Tasas diarias promedio de variación (%)
-    const DAILY_DELTA_WTI_PCT = 1.85 / 7;
-    const DAILY_DELTA_BRENT_PCT = 1.60 / 7;
-    const DAILY_DELTA_TRM_PCT = 0.42 / 7;
-
-    // Estado global de proyecciones
-    let currentDays = 7;
-    let wtiFut = 76.14;
-    let brentFut = 79.50;
-    let trmFut = 4209.30;
-    let deltaWtiPct = 1.85;
-    let deltaBrentPct = 1.60;
-    let deltaTrmPct = 0.42;
-    let deltaUnifiedPct = 0.777;
-
-    function switchTab(tabId, btn) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      btn.classList.add('active');
-    }
-
-    function updateProjections() {
-      const daysInput = parseInt(document.getElementById('proj-days').value) || 1;
-      currentDays = daysInput;
-
-      // Recálculo proporcional según días
-      deltaWtiPct = DAILY_DELTA_WTI_PCT * currentDays;
-      deltaBrentPct = DAILY_DELTA_BRENT_PCT * currentDays;
-      deltaTrmPct = DAILY_DELTA_TRM_PCT * currentDays;
-
-      wtiFut = WTI_SPOT * (1 + deltaWtiPct / 100);
-      brentFut = BRENT_SPOT * (1 + deltaBrentPct / 100);
-      trmFut = TRM_SPOT * (1 + deltaTrmPct / 100);
-
-      // Variación unificada en porcentaje: Δ WTI (%) * Δ USD/COP (%)
-      deltaUnifiedPct = deltaWtiPct * deltaTrmPct;
-
-      // Actualizar UI - Futuros
-      document.getElementById('badge-wti-fut').innerText = `+${deltaWtiPct.toFixed(2)}%`;
-      document.getElementById('val-wti-fut').innerHTML = `$${wtiFut.toFixed(2)} <span style="font-size:9px; color:var(--text-muted);">USD</span>`;
-      document.getElementById('sub-wti-fut').innerText = `Est. a ${currentDays} Día(s)`;
-
-      document.getElementById('badge-brent-fut').innerText = `+${deltaBrentPct.toFixed(2)}%`;
-      document.getElementById('val-brent-fut').innerHTML = `$${brentFut.toFixed(2)} <span style="font-size:9px; color:var(--text-muted);">USD</span>`;
-      document.getElementById('sub-brent-fut').innerText = `Est. a ${currentDays} Día(s)`;
-
-      document.getElementById('badge-trm-fut').innerText = `+${deltaTrmPct.toFixed(2)}%`;
-      document.getElementById('val-trm-fut').innerHTML = `$${trmFut.toLocaleString('es-CO', {minimumFractionDigits:2, maximumFractionDigits:2})} <span style="font-size:9px; color:var(--text-muted);">COP</span>`;
-      document.getElementById('sub-trm-fut').innerText = `Est. a ${currentDays} Día(s)`;
-
-      // Actualizar UI - Variación Unificada
-      document.getElementById('lbl-unified-formula').innerText = `Fórmula: ${deltaWtiPct.toFixed(2)}% (WTI) × ${deltaTrmPct.toFixed(2)}% (TRM) a ${currentDays}D`;
-      document.getElementById('val-unified-pct').innerText = `+${deltaUnifiedPct.toFixed(4)}%`;
-
-      // Recálculo Tecniempack Pricing
-      updateTecniempackPricing();
-
-      calculateContract();
-    }
-
-    function updateTecniempackPricing() {
-      const costAdjustmentPct = (deltaWtiPct * 0.65) + (deltaTrmPct * 0.35);
-      const projMillarPrice = TEC_MILLAR_BASE_COP * (1 + costAdjustmentPct / 100);
-
-      document.getElementById('tec-proj-label').innerText = `Precio Proyectado Millar (${currentDays}D):`;
-      document.getElementById('tec-proj-price').innerText = `$${projMillarPrice.toLocaleString('es-CO', {maximumFractionDigits: 0})} COP`;
-      document.getElementById('tec-impact-detail').innerHTML = `Ajuste Sugerido en Cotización: <strong>+${costAdjustmentPct.toFixed(2)}%</strong> (Ponderado: 65% resina / 35% costos locales).`;
-
-      const recBox = document.getElementById('rec-text');
-      if (costAdjustmentPct > 2) {
-        recBox.innerHTML = `Con una proyección a ${currentDays} días de alza superior al 2% (+${costAdjustmentPct.toFixed(2)}%), se aconseja <strong>reducir la vigencia de la oferta a 3 días hábiles</strong> o solicitar asesoría técnica para cotizar con fórmula de reajuste automático.`;
-      } else if (costAdjustmentPct > 0) {
-        recBox.innerHTML = `Variación moderada a ${currentDays} días (+${costAdjustmentPct.toFixed(2)}%). Se sugiere mantener la vigencia estándar de <strong>5 a 7 días hábiles</strong> analizando requerimientos si la TRM supera los $${(TRM_SPOT * 1.02).toFixed(0)} COP.`;
-      } else {
-        recBox.innerHTML = `Ambiente de costos estable o favorable a ${currentDays} días (${costAdjustmentPct.toFixed(2)}%). Es el momento oportuno para <strong>agendar consultoría corporativa</strong> y acordar volúmenes a precio fijo.`;
-      }
-    }
-
-    function calculateContract() {
-      const volume = parseFloat(document.getElementById('bbl-volume').value) || 0;
-      const refSelect = document.getElementById('oil-ref');
-      const selectedRefType = refSelect.options[refSelect.selectedIndex].getAttribute('data-ref');
-      
-      let spotPrice = WTI_SPOT;
-      let futPrice = wtiFut;
-
-      if (selectedRefType === 'brent') {
-        spotPrice = BRENT_SPOT;
-        futPrice = brentFut;
-      }
-
-      const totalUSD = volume * spotPrice;
-      const totalCOP = totalUSD * TRM_SPOT;
-
-      const totalFutUSD = volume * futPrice;
-      const totalFutCOP = totalFutUSD * trmFut;
-
-      document.getElementById('res-usd').innerText = `$${totalUSD.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} USD`;
-      document.getElementById('res-cop').innerText = `≈ $${totalCOP.toLocaleString('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2})} COP (Spot)`;
-      document.getElementById('res-fut').innerText = `🔮 Proyección (${currentDays}D): $${totalFutUSD.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} USD (≈ $${totalFutCOP.toLocaleString('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2})} COP)`;
-    }
-
-    async function sendWebhook() {
-      const url = document.getElementById('webhook-url').value;
-      const notes = document.getElementById('sync-notes').value;
-      const volume = document.getElementById('bbl-volume').value;
-      const refSelect = document.getElementById('oil-ref');
-      const selectedRef = refSelect.options[refSelect.selectedIndex].text;
-      
-      const payload = {
-        module: 'EPFIE',
-        version: '1.8.1',
-        timestamp: new Date().toISOString(),
-        projection_parameters: {
-          days: currentDays,
-          delta_wti_pct: deltaWtiPct,
-          delta_trm_pct: deltaTrmPct,
-          delta_unified_pct: deltaUnifiedPct
-        },
-        tecniempack_pricing: {
-          base_millar_cop: TEC_MILLAR_BASE_COP,
-          suggested_adjustment_pct: ((deltaWtiPct * 0.65) + (deltaTrmPct * 0.35)).toFixed(2)
-        },
-        negotiation: {
-          reference: selectedRef,
-          volume_bbl: volume,
-          spot_price_usd: refSelect.value,
-          projected_trm_cop: trmFut,
-          notes: notes
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecniempack S.A.S. - Motor EPFIE v1.8 & Benchmarking B2B</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        azulTecno: '#003366',
+                        verdeEco: '#28A745',
+                        grisClaro: '#E2E8F0',
+                        blancoSoporte: '#FFFFFF'
+                    }
+                }
+            }
         }
-      };
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased p-4 md:p-8">
 
-      const respContainer = document.getElementById('webhook-response');
-      respContainer.style.display = 'block';
-      respContainer.innerText = 'Enviando petición a ' + url + '...';
+    <div class="max-w-7xl mx-auto bg-white rounded-xl shadow-lg border border-grisClaro p-6 md:p-8">
+        
+        <!-- ENCABEZADO Y CONTROL DE SELECTOR DE PROVEEDOR -->
+        <div class="border-b border-grisClaro pb-6 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+                <span class="inline-flex items-center gap-1.5 bg-verdeEco/10 text-verdeEco font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-2">
+                    <i class="fa-solid fa-chart-line"></i> Inteligencia Competitiva & Motor EPFIE v1.8
+                </span>
+                <h1 class="text-2xl md:text-3xl font-extrabold text-azulTecno">
+                    Benchmarking Comparativo de Mercado & Sensibilidad de Resinas
+                </h1>
+                <p class="text-sm text-slate-600 mt-1">
+                    Audite el posicionamiento técnico y bandas de precios seguros de Tecniempack frente a competidores de la industria empaquera.
+                </p>
+            </div>
+            
+            <!-- SELECTOR DE PROVEEDOR / COMPETIDOR -->
+            <div class="bg-grisClaro/60 p-4 rounded-lg border border-grisClaro min-w-[300px]">
+                <label for="provider-select" class="block text-xs font-bold uppercase tracking-wider text-azulTecno mb-2">
+                    <i class="fa-solid fa-building-columns text-verdeEco"></i> Seleccionar Competidor / Proveedor:
+                </label>
+                <select id="provider-select" onchange="runBenchmarkingEPFIE()" class="w-full bg-white border border-slate-300 text-azulTecno font-bold text-sm rounded-md p-2.5 focus:outline-none focus:ring-2 focus:ring-verdeEco transition cursor-pointer shadow-sm">
+                    <option value="prov_promedio">Estándar Promedio del Mercado</option>
+                    <option value="prov_a">Competidor A (Distribuidor Importado)</option>
+                    <option value="prov_b">Competidor B (Fabricante Local Genérico)</option>
+                    <option value="prov_c">Competidor C (Comercializadora Mostrador)</option>
+                </select>
+            </div>
+        </div>
 
-      try {
-        const res = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        const data = await res.json();
-        respContainer.innerText = '✅ Respuesta del servidor:\n' + JSON.stringify(data, null, 2);
-      } catch (err) {
-        respContainer.innerText = '❌ Error al enviar:\n' + err.message;
-      }
-    }
+        <!-- SUB-PANEL EPFIE v1.8: SIMULADOR DE COMMODITIES (TRM Y WTI) -->
+        <div class="bg-azulTecno/5 p-4 rounded-lg border border-azulTecno/20 mb-8 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+            <div>
+                <span class="text-xs font-bold text-azulTecno uppercase tracking-wider">
+                    <i class="fa-solid fa-oil-well text-verdeEco"></i> Parámetros Petroquímicos (EPFIE 1.8)
+                </span>
+                <p class="text-xs text-slate-500 mt-0.5">Ajuste de fluctuación de materia prima (65% costo resina)</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <label class="text-xs font-bold text-slate-600">TRM (USD/COP):</label>
+                <input type="number" id="epfie-trm" value="4150" onchange="runBenchmarkingEPFIE()" class="w-28 p-1.5 bg-white border border-slate-300 rounded text-sm font-bold text-azulTecno text-right">
+            </div>
+            <div class="flex items-center gap-3">
+                <label class="text-xs font-bold text-slate-600">Crudo WTI (USD/Bbl):</label>
+                <input type="number" id="epfie-wti" value="72.50" step="0.5" onchange="runBenchmarkingEPFIE()" class="w-28 p-1.5 bg-white border border-slate-300 rounded text-sm font-bold text-azulTecno text-right">
+            </div>
+        </div>
 
-    // Context Detection desde Twenty CRM Iframe
-    window.addEventListener('message', (event) => {
-      if (event.data && event.data.recordId) {
-        document.getElementById('context-tag').innerText = `Context ID: ${event.data.objectType || 'Record'}: ${event.data.recordId}`;
-      }
-    });
+        <!-- TARJETAS DE RESUMEN EJECUTIVO / KPIS IMPACTADOS -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div class="p-4 bg-grisClaro/30 rounded-lg border border-grisClaro">
+                <div class="text-xs uppercase font-bold text-slate-500">Proveedor Seleccionado</div>
+                <div id="kpi-provider-name" class="text-lg font-extrabold text-azulTecno mt-1">Estándar Promedio</div>
+                <div class="text-[11px] text-slate-500 mt-0.5" id="kpi-provider-type">Punto de referencia del mercado</div>
+            </div>
 
-    // Inicializar proyecciones al cargar
-    updateProjections();
-  </script>
+            <div class="p-4 bg-grisClaro/30 rounded-lg border border-grisClaro">
+                <div class="text-xs uppercase font-bold text-slate-500">Diferencial de Precio Medío</div>
+                <div id="kpi-price-diff" class="text-lg font-extrabold text-verdeEco mt-1">-12.5% vs. Tecniempack</div>
+                <div class="text-[11px] text-slate-500 mt-0.5">Optimización en pedidos por volumen</div>
+            </div>
+
+            <div class="p-4 bg-grisClaro/30 rounded-lg border border-grisClaro">
+                <div class="text-xs uppercase font-bold text-slate-500">Tolerancia de Galga / Micras</div>
+                <div id="kpi-gauge-diff" class="text-lg font-extrabold text-azulTecno mt-1">±1.5% Tecniempack</div>
+                <div class="text-[11px] text-slate-500 mt-0.5">Resistencia mecánica garantizada</div>
+            </div>
+
+            <div class="p-4 bg-grisClaro/30 rounded-lg border border-grisClaro">
+                <div class="text-xs uppercase font-bold text-slate-500">Banda de Seguridad EPFIE (Pauta 32%)[cite: 2]</div>
+                <div id="kpi-band-safe" class="text-lg font-extrabold text-verdeEco mt-1">$201.300 COP</div>
+                <div class="text-[11px] text-slate-500 mt-0.5">Precio indexado a resina actual</div>
+            </div>
+        </div>
+
+        <!-- TABLA COMPARATIVA DE BENCHMARKING TÉCNICO & PRECIOS SEGUROS -->
+        <div class="overflow-x-auto border border-grisClaro rounded-lg mb-8 shadow-sm">
+            <table class="w-full text-left border-collapse text-sm">
+                <thead>
+                    <tr class="bg-azulTecno text-white uppercase text-xs tracking-wider">
+                        <th class="p-3.5 font-bold">Línea de Empaque / Parámetro Técnico</th>
+                        <th class="p-3.5 font-bold bg-blue-900/50 text-verdeEco border-x border-blue-800">
+                            <i class="fa-solid fa-shield-halved mr-1"></i> Tecniempack (Banda Pauta 32%)[cite: 2]
+                        </th>
+                        <th class="p-3.5 font-bold" id="th-selected-provider">
+                            <i class="fa-solid fa-code-compare mr-1"></i> Proveedor Seleccionado
+                        </th>
+                        <th class="p-3.5 font-bold text-center">Variación / Ventaja Estratégica</th>
+                    </tr>
+                </thead>
+                <tbody id="benchmarking-table-body" class="divide-y divide-grisClaro">
+                    <!-- Filas dinámicas calculadas por JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- FOOTER Y LLAMADO A LA ACCIÓN CONSULTIVO B2B -->
+        <div class="bg-grisClaro/40 p-6 rounded-lg border border-grisClaro flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+                <h4 class="font-extrabold text-azulTecno text-base">¿Desea evaluar las fichas técnicas y micrajes de su proveedor actual?</h4>
+                <p class="text-xs text-slate-600 mt-1">Nuestros ingenieros de empaque analizan su estructura de costos y resistencia sin costo.</p>
+            </div>
+            <a href="https://wa.me/573165028834?text=Hola,%20deseo%20recibir%20asesoria%20tecnica%20y%20comparativa%20de%20benchmarking%20para%20los%20empaques%20de%20mi%20empresa." 
+               target="_blank" 
+               onclick="trackB2BLead('click_asesoria_tecnica')"
+               class="bg-verdeEco hover:bg-green-600 text-white font-bold py-3.5 px-6 rounded-md uppercase text-xs tracking-wider transition shadow flex items-center gap-2 whitespace-nowrap">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Solicitar Asesoría Técnica</span>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- LÓGICA JAVASCRIPT: MOTOR EPFIE v1.8 + BENCHMARKING INTERACTIVO -->
+    <script>
+        // BASE DE DATOS BASE DE PRODUCTOS (EPFIE v1.8)[cite: 2]
+        const epfieBaseProducts = [
+            {
+                id: "prod_1",
+                feature: "Bolsa Troquelada Reforzada PEAD (Millar)",
+                costoBaseUSD: 32.50, // Costo base expresado en USD
+                pautaPercent: 0.32,  // 32% Pauta Estándar EPFIE[cite: 2]
+                gaugeSpec: "±1.5% (Estructura homogénea)"
+            },
+            {
+                id: "prod_2",
+                feature: "Stretch Film Manual 50cm (Rollo 2kg)",
+                costoBaseUSD: 5.10,
+                pautaPercent: 0.32,
+                gaugeSpec: "Alto elongamiento y pretensado"
+            },
+            {
+                id: "prod_3",
+                feature: "Bolsa Hermética Inocua PEBD (Millar)",
+                costoBaseUSD: 28.00,
+                pautaPercent: 0.32,
+                gaugeSpec: "Sellado térmico continuo"
+            }
+        ];
+
+        // BASE DE DATOS DE BENCHMARKING Y COMPETIDORES
+        const benchmarkingData = {
+            prov_promedio: {
+                name: "Estándar Promedio del Mercado",
+                type: "Promedio ponderado del sector empaquero",
+                priceDiff: "-12.5% Competitivo",
+                gaugeDiff: "±8.0% Tol.",
+                factorPrices: [1.12, 1.11, 1.15],
+                advantages: ["10.7% más económico", "9.5% más económico", "13.0% más económico"],
+                statuses: ["positive", "positive", "positive"]
+            },
+            prov_a: {
+                name: "Competidor A (Distribuidor Importado)",
+                type: "Comercializadora de productos importados",
+                priceDiff: "-8.0% en Volumen",
+                gaugeDiff: "±5.0% Tol.",
+                factorPrices: [1.06, 0.98, 1.08],
+                advantages: ["5.6% menor costo", "Precio competitivo", "7.4% menor costo"],
+                statuses: ["positive", "neutral", "positive"]
+            },
+            prov_b: {
+                name: "Competidor B (Fabricante Local Genérico)",
+                type: "Planta de extrusión tradicional",
+                priceDiff: "-15.0% vs. Genérico",
+                gaugeDiff: "±10.0% Tol.",
+                factorPrices: [0.94, 1.09, 0.96],
+                advantages: ["Mayor micraje real por bolsa", "8.2% más económico", "Mayor densidad de polímero"],
+                statuses: ["neutral", "positive", "positive"]
+            },
+            prov_c: {
+                name: "Competidor C (Comercializadora Mostrador)",
+                type: "Venta al detal / mostrador de empaques",
+                priceDiff: "-22.0% en Volumen B2B",
+                gaugeDiff: "Sin Ficha Técnica",
+                factorPrices: [1.25, 1.24, 1.28],
+                advantages: ["20.0% de ahorro mayorista", "19.3% de ahorro mayorista", "21.8% de ahorro mayorista"],
+                statuses: ["positive", "positive", "positive"]
+            }
+        };
+
+        // FUNCIÓN PRINCIPAL DE CÁLCULO Y ACTUALIZACIÓN
+        function runBenchmarkingEPFIE() {
+            const trm = parseFloat(document.getElementById('epfie-trm').value) || 4150;
+            const wti = parseFloat(document.getElementById('epfie-wti').value) || 72.50;
+            const select = document.getElementById('provider-select');
+            const selectedKey = select.value;
+            const provider = benchmarkingData[selectedKey];
+
+            // Factor de ajuste petroquímico EPFIE v1.8 (Indexación Resina vs WTI base 70.00)[cite: 2]
+            const oilFactor = 1 + (((wti - 70.00) / 70.00) * 0.65);
+
+            // 1. Actualizar Encabezado y KPIs
+            document.getElementById('th-selected-provider').innerHTML = `<i class="fa-solid fa-building mr-1"></i> ${provider.name}`;
+            document.getElementById('kpi-provider-name').textContent = provider.name.split(' (')[0];
+            document.getElementById('kpi-provider-type').textContent = provider.type;
+            document.getElementById('kpi-price-diff').textContent = provider.priceDiff;
+            document.getElementById('kpi-gauge-diff').textContent = provider.gaugeDiff;
+
+            // 2. Renderizar Filas Dinámicas combinando EPFIE y Benchmarking
+            const tbody = document.getElementById('benchmarking-table-body');
+            tbody.innerHTML = '';
+
+            let totalPautaTecniempack = 0;
+
+            epfieBaseProducts.forEach((prod, index) => {
+                // Cálculo del precio de Pauta Estándar (32% Markup) en COP indexado[cite: 2]
+                const costoAjustadoCOP = prod.costoBaseUSD * trm * oilFactor;
+                const precioPautaTecniempack = costoAjustadoCOP * (1 + prod.pautaPercent);
+                totalPautaTecniempack += precioPautaTecniempack;
+
+                // Precio del competidor simulado
+                const precioCompetidor = precioPautaTecniempack * provider.factorPrices[index];
+
+                const tr = document.createElement('tr');
+                tr.className = index % 2 === 0 ? 'bg-white hover:bg-slate-50 transition' : 'bg-grisClaro/20 hover:bg-slate-50 transition';
+
+                const badgeColor = provider.statuses[index] === 'positive' 
+                    ? 'bg-green-100 text-verdeEco border-green-300' 
+                    : 'bg-amber-100 text-amber-800 border-amber-300';
+
+                const badgeIcon = provider.statuses[index] === 'positive' ? 'fa-check' : 'fa-minus';
+
+                tr.innerHTML = `
+                    <td class="p-3.5 font-bold text-azulTecno">
+                        ${prod.feature}
+                        <div class="text-[11px] font-normal text-slate-500">${prod.gaugeSpec}</div>
+                    </td>
+                    <td class="p-3.5 bg-blue-50/50 text-azulTecno font-extrabold border-x border-blue-100">
+                        $${Math.round(precioPautaTecniempack).toLocaleString('es-CO')} COP
+                    </td>
+                    <td class="p-3.5 text-slate-700">
+                        $${Math.round(precioCompetidor).toLocaleString('es-CO')} COP
+                    </td>
+                    <td class="p-3.5 text-center">
+                        <span class="inline-flex items-center gap-1 border px-2.5 py-1 rounded-full text-xs font-bold ${badgeColor}">
+                            <i class="fa-solid ${badgeIcon}"></i> ${provider.advantages[index]}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Actualizar KPI de Banda de Seguridad Promedio[cite: 2]
+            const avgPauta = totalPautaTecniempack / epfieBaseProducts.length;
+            document.getElementById('kpi-band-safe').textContent = `$${Math.round(avgPauta).toLocaleString('es-CO')} COP`;
+        }
+
+        // SEGUIMIENTO DE ANALÍTICA B2B (GTM / GA4)
+        function trackB2BLead(eventName) {
+            if (window.dataLayer) {
+                window.dataLayer.push({
+                    'event': eventName,
+                    'lead_type': 'Benchmarking_EPFIE_1.8',
+                    'provider_compared': document.getElementById('provider-select').value
+                });
+            }
+        }
+
+        // Inicializar al cargar la página
+        document.addEventListener('DOMContentLoaded', runBenchmarkingEPFIE);
+    </script>
 </body>
 </html>

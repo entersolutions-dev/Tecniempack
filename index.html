@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestros Servicios | Tecniempack S.A.S. - Aliado Estratégico en Empaques</title>
+    <title>Tecniempack S.A.S. | Soluciones Integrales de Empaque y Embalaje Corporativo</title>
+    <meta name="description" content="Aliado Estratégico en fabricación, extrusión e impresión flexográfica de empaques plásticos corporativos. Calibres exactos, resistencia y soluciones sostenibles.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tecniempack S.A.S. | Soluciones Integrales de Empaque Corporativo">
+    <meta property="og:description" content="Fabricación e impresión flexográfica de soluciones plásticas flexibles para el sector corporativo.">
+    <meta property="og:type" content="website">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Montserrat & Roboto -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <script>
         tailwind.config = {
             theme: {
@@ -20,454 +22,674 @@
                         verdeEco: '#28A745',
                         grisClaro: '#E2E8F0',
                         blancoSoporte: '#FFFFFF',
-                        grisTexto: '#334155'
+                        azulOscuro: '#002244'
                     },
                     fontFamily: {
                         sans: ['Roboto', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
                     }
                 }
             }
         }
     </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        .gradient-brand {
-            background: linear-gradient(135deg, #003366 0%, #001F3F 100%);
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FFFFFF;
+            color: #1E293B;
         }
-        .step-active {
-            border-color: #28A745 !important;
-            background-color: #FFFFFF !important;
-            color: #003366 !important;
-            box-shadow: 0 4px 6px -1px rgba(40, 167, 69, 0.2);
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Montserrat', sans-serif;
         }
-        .modal-backdrop {
-            background-color: rgba(0, 51, 102, 0.80);
-            backdrop-filter: blur(4px);
+        .isologotipo-text {
+            font-style: italic;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 51, 102, 0.08);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
         }
     </style>
 </head>
-<body class="bg-blancoSoporte text-grisTexto font-sans antialiased leading-relaxed">
+<body class="bg-blancoSoporte text-slate-800 antialiased selection:bg-verdeEco selection:text-white">
 
-    <!-- HEADER / NAVEGACIÓN PRINCIPAL -->
-    <header class="sticky top-0 z-40 bg-blancoSoporte border-b border-grisClaro shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- LOGO INSTITUCIONAL -->
-            <div class="flex items-center space-x-3">
-                <a href="../index.html" class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-azulTecno rounded-lg flex items-center justify-center text-verdeEco font-heading font-extrabold text-2xl shadow">
-                        T
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="font-heading font-extrabold text-xl text-azulTecno tracking-tight italic">TECNIEMPACK <span class="text-xs text-verdeEco not-italic">S.A.S.</span></span>
-                        <span class="text-[10px] uppercase font-bold tracking-widest text-slate-500">Empaques & Embalaje Corporativo</span>
-                    </div>
+    <!-- TOP HEADER / CONTACT STRIP -->
+    <div class="bg-azulOscuro text-white text-xs py-2 border-b border-blue-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-6">
+                <a href="mailto:contacto@tecniempack.com" class="hover:text-verdeEco transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-envelope text-verdeEco"></i> contacto@tecniempack.com
+                </a>
+                <a href="https://wa.me/573165028834?text=Hola,%20deseo%20recibir%20asesor%C3%ADa%20t%C3%A9cnica%20para%20los%20empaques%20de%20mi%20empresa" target="_blank" class="hover:text-verdeEco transition flex items-center gap-1.5">
+                    <i class="fa-brands fa-whatsapp text-verdeEco"></i> WhatsApp Directo: +57 (316) 502-8834
                 </a>
             </div>
-
-            <!-- NAVEGACIÓN Y BOTÓN INICIO -->
-            <nav class="hidden md:flex items-center space-x-6">
-                <a href="../index.html" class="inline-flex items-center gap-2 bg-grisClaro hover:bg-slate-300 text-azulTecno font-heading font-bold px-4 py-2 rounded-md transition text-sm">
-                    <i class="fa-solid fa-house"></i> Inicio
+            <div class="flex items-center gap-4">
+                <span class="text-slate-300"><i class="fa-solid fa-shield-halved text-verdeEco mr-1"></i> Aliado Estratégico Corporativo</span>
+                <a href="https://www.linkedin.com/in/hector-yepes-mayorga-19a809437/" target="_blank" class="hover:text-verdeEco transition" title="Perfil Oficial de LinkedIn">
+                    <i class="fa-brands fa-linkedin text-sm"></i>
                 </a>
-                <a href="#enfoque" class="text-azulTecno font-medium hover:text-verdeEco transition text-sm">Aliado Estratégico</a>
-                <a href="#catalogo" class="text-azulTecno font-medium hover:text-verdeEco transition text-sm">Catálogo Corporativo</a>
-                <a href="#contacto" class="bg-verdeEco hover:bg-green-600 text-blancoSoporte font-heading font-bold px-5 py-2.5 rounded-md shadow transition text-sm uppercase tracking-wider">
-                    Analizar Mis Requerimientos
-                </a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- HERO SECTION & PROMESA DE VALOR -->
-    <section class="gradient-brand text-blancoSoporte py-16 lg:py-24 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 bg-verdeEco/20 border border-verdeEco/40 text-verdeEco text-xs font-heading font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
-                        <i class="fa-solid fa-shield-halved"></i> Ingeniería & Manufactura de Polímeros
-                    </div>
-                    <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
-                        Desarrollamos e imprimimos soluciones integrales de empaque y embalaje flexible que potencian la identidad de su marca.
-                    </h1>
-                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl">
-                        Acompañamos a su departamento de operaciones, compras e ingeniería en la optimización de calibres, micrajes y formulaciones reciclables PCR para garantizar la máxima eficiencia operativa.
-                    </p>
-                    <div class="pt-4 flex flex-wrap gap-4">
-                        <a href="#catalogo" class="bg-verdeEco hover:bg-green-600 text-blancoSoporte font-heading font-bold px-6 py-3.5 rounded-md shadow-lg transition uppercase text-sm tracking-wider flex items-center gap-2">
-                            <span>Solicitar Asesoría Técnica</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                        <a href="#enfoque" class="border border-grisClaro/40 hover:bg-blancoSoporte/10 text-blancoSoporte font-heading font-semibold px-6 py-3.5 rounded-md transition text-sm">
-                            Ver Modelo de Acompañamiento
-                        </a>
-                    </div>
-                </div>
-
-                <!-- CARDS KPIS CORPORATIVOS -->
-                <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-                    <div class="bg-blancoSoporte/10 backdrop-blur-md p-6 rounded-xl border border-blancoSoporte/15">
-                        <div class="text-verdeEco text-3xl font-heading font-extrabold mb-1">+120 Ton</div>
-                        <div class="text-xs uppercase font-bold tracking-wider text-slate-300">Capacidad Extrusión Mensual</div>
-                    </div>
-                    <div class="bg-blancoSoporte/10 backdrop-blur-md p-6 rounded-xl border border-blancoSoporte/15">
-                        <div class="text-verdeEco text-3xl font-heading font-extrabold mb-1">99.4%</div>
-                        <div class="text-xs uppercase font-bold tracking-wider text-slate-300">Cumplimiento Logística JIT</div>
-                    </div>
-                    <div class="bg-blancoSoporte/10 backdrop-blur-md p-6 rounded-xl border border-blancoSoporte/15">
-                        <div class="text-verdeEco text-3xl font-heading font-extrabold mb-1">Hasta 8</div>
-                        <div class="text-xs uppercase font-bold tracking-wider text-slate-300">Tintas Flexografía HD</div>
-                    </div>
-                    <div class="bg-blancoSoporte/10 backdrop-blur-md p-6 rounded-xl border border-blancoSoporte/15">
-                        <div class="text-verdeEco text-3xl font-heading font-extrabold mb-1">Línea Eco</div>
-                        <div class="text-xs uppercase font-bold tracking-wider text-slate-300">Resinas PCR & Res. 1407</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NARRATIVA INTERACTIVA: NUESTRO ENFOQUE COMO ALIADO ESTRATÉGICO -->
-    <section id="enfoque" class="py-16 bg-grisClaro/50 border-b border-grisClaro">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-verdeEco font-heading font-extrabold uppercase text-xs tracking-widest">Garantía Operativa & Calidad</span>
-                <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-azulTecno mt-1">Nuestro Enfoque como Aliado Estratégico</h2>
-                <p class="text-slate-600 text-sm sm:text-base mt-2">Un ciclo de acompañamiento integral de 5 etapas que combina gestión comercial, rigor productivo, eco-sostenibilidad y respaldo continuo.</p>
-            </div>
-
-            <!-- CONTROLES PASO A PASO -->
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8" id="step-tabs">
-                <button onclick="setStep(1)" id="tab-step-1" class="step-btn p-4 rounded-lg bg-blancoSoporte border-2 border-grisClaro text-left transition hover:border-verdeEco shadow-sm step-active">
-                    <span class="block text-xs font-bold text-verdeEco uppercase">Etapa 01</span>
-                    <span class="font-heading font-bold text-sm text-azulTecno block mt-0.5">Diagnóstico Técnico</span>
-                </button>
-                <button onclick="setStep(2)" id="tab-step-2" class="step-btn p-4 rounded-lg bg-blancoSoporte border-2 border-grisClaro text-left transition hover:border-verdeEco shadow-sm">
-                    <span class="block text-xs font-bold text-slate-400 uppercase">Etapa 02</span>
-                    <span class="font-heading font-bold text-sm text-azulTecno block mt-0.5">Diseño & Eco-Ingeniería</span>
-                </button>
-                <button onclick="setStep(3)" id="tab-step-3" class="step-btn p-4 rounded-lg bg-blancoSoporte border-2 border-grisClaro text-left transition hover:border-verdeEco shadow-sm">
-                    <span class="block text-xs font-bold text-slate-400 uppercase">Etapa 03</span>
-                    <span class="font-heading font-bold text-sm text-azulTecno block mt-0.5">Fabricación & Impresión</span>
-                </button>
-                <button onclick="setStep(4)" id="tab-step-4" class="step-btn p-4 rounded-lg bg-blancoSoporte border-2 border-grisClaro text-left transition hover:border-verdeEco shadow-sm">
-                    <span class="block text-xs font-bold text-slate-400 uppercase">Etapa 04</span>
-                    <span class="font-heading font-bold text-sm text-azulTecno block mt-0.5">Calidad & Entrega JIT</span>
-                </button>
-                <button onclick="setStep(5)" id="tab-step-5" class="step-btn p-4 rounded-lg bg-blancoSoporte border-2 border-grisClaro text-left transition hover:border-verdeEco shadow-sm col-span-2 md:col-span-1">
-                    <span class="block text-xs font-bold text-slate-400 uppercase">Etapa 05</span>
-                    <span class="font-heading font-bold text-sm text-azulTecno block mt-0.5">Respaldo Postventa</span>
-                </button>
-            </div>
-
-            <!-- DESPLIEGUE DEL CONTENIDO DE ETAPA -->
-            <div class="bg-blancoSoporte p-6 sm:p-8 rounded-xl border border-grisClaro shadow-md" id="step-content">
-                <!-- Contenido dinámico renderizado vía JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- CATALOGO DE SERVICIOS & FILTRO POR SECTOR CORPORATIVO -->
-    <section id="catalogo" class="py-16 bg-blancoSoporte">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-                <div>
-                    <span class="text-verdeEco font-heading font-extrabold uppercase text-xs tracking-widest">Catálogo Especializado</span>
-                    <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-azulTecno mt-1">Servicios e Insumos para la Industria</h2>
-                </div>
-                <!-- BUSCADOR -->
-                <div class="relative w-full md:w-80">
-                    <input type="text" id="search-input" onkeyup="filterServices()" placeholder="Buscar por material, calibre o sector..." class="w-full pl-10 pr-4 py-2.5 border border-grisClaro rounded-lg focus:outline-none focus:border-azulTecno text-sm">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3.5 text-slate-400 text-sm"></i>
-                </div>
-            </div>
-
-            <!-- TABS POR SECTOR CORPORATIVO -->
-            <div class="flex flex-wrap gap-2 mb-8 border-b border-grisClaro pb-4" id="sector-tabs">
-                <button onclick="filterSector('todos')" class="sector-btn bg-azulTecno text-blancoSoporte px-4 py-2 rounded-md font-heading text-xs font-bold uppercase tracking-wider">Todos los Sectores</button>
-                <button onclick="filterSector('comercio')" class="sector-btn bg-grisClaro text-azulTecno hover:bg-slate-300 px-4 py-2 rounded-md font-heading text-xs font-bold uppercase tracking-wider">Comercio & Retail</button>
-                <button onclick="filterSector('alimentos')" class="sector-btn bg-grisClaro text-azulTecno hover:bg-slate-300 px-4 py-2 rounded-md font-heading text-xs font-bold uppercase tracking-wider">Alimentos & Bebidas</button>
-                <button onclick="filterSector('farma')" class="sector-btn bg-grisClaro text-azulTecno hover:bg-slate-300 px-4 py-2 rounded-md font-heading text-xs font-bold uppercase tracking-wider">Farmacéutica & Cosmética</button>
-                <button onclick="filterSector('logistica')" class="sector-btn bg-grisClaro text-azulTecno hover:bg-slate-300 px-4 py-2 rounded-md font-heading text-xs font-bold uppercase tracking-wider">Logística & Cadena de Suministro</button>
-                <button onclick="filterSector('industria')" class="sector-btn bg-grisClaro text-azulTecno hover:bg-slate-300 px-4 py-2 rounded-md font-heading text-xs font-bold uppercase tracking-wider">Industria en General</button>
-            </div>
-
-            <!-- GRILLA DE SERVICIOS -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
-                <!-- Tarjetas dinámicas generadas mediante JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- MODAL DE FICHA TÉCNICA Y COTIZACIÓN -->
-    <div id="service-modal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-blancoSoporte rounded-xl max-w-2xl w-full shadow-2xl border border-grisClaro overflow-hidden my-8">
-            <div class="bg-azulTecno text-blancoSoporte p-6 flex justify-between items-center">
-                <div>
-                    <span id="modal-sector" class="text-verdeEco font-heading font-extrabold uppercase text-xs tracking-widest">Ficha Técnica Corporativa</span>
-                    <h3 id="modal-title" class="font-heading text-xl font-bold mt-1">Nombre del Servicio</h3>
-                </div>
-                <button onclick="closeModal()" class="text-slate-300 hover:text-blancoSoporte text-2xl font-bold">&times;</button>
-            </div>
-            <div class="p-6 space-y-6">
-                <p id="modal-description" class="text-slate-600 text-sm leading-relaxed"></p>
-                <div class="bg-grisClaro/40 p-4 rounded-lg border border-grisClaro">
-                    <h4 class="font-heading font-bold text-azulTecno text-xs uppercase tracking-wider mb-2">Especificaciones de Material & Proceso:</h4>
-                    <ul id="modal-specs" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700"></ul>
-                </div>
-                
-                <!-- FORMULARIO INTEGRADO -->
-                <form id="modal-form" onsubmit="handleFormSubmit(event)" class="space-y-4 pt-2 border-t border-grisClaro">
-                    <h4 class="font-heading font-bold text-azulTecno text-sm">Solicitar Cotización Corporativa Directa</h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <input type="text" required placeholder="Nombre Completo *" class="w-full px-3 py-2 border border-grisClaro rounded text-xs focus:outline-none focus:border-azulTecno">
-                        <input type="text" required placeholder="Empresa / Razón Social *" class="w-full px-3 py-2 border border-grisClaro rounded text-xs focus:outline-none focus:border-azulTecno">
-                        <input type="email" required placeholder="Correo Corporativo *" class="w-full px-3 py-2 border border-grisClaro rounded text-xs focus:outline-none focus:border-azulTecno">
-                        <input type="tel" required placeholder="Teléfono / WhatsApp *" class="w-full px-3 py-2 border border-grisClaro rounded text-xs focus:outline-none focus:border-azulTecno">
-                    </div>
-                    <button type="submit" class="w-full bg-verdeEco hover:bg-green-600 text-blancoSoporte font-heading font-bold py-3 rounded text-xs uppercase tracking-widest transition shadow">
-                        Analizar Mis Requerimientos
-                    </button>
-                </form>
             </div>
         </div>
     </div>
 
-    <!-- FOOTER INSTITUCIONAL -->
-    <footer id="contacto" class="bg-azulTecno text-blancoSoporte border-t-4 border-verdeEco pt-12 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
-            <div>
-                <span class="font-heading font-extrabold text-lg text-blancoSoporte italic">TECNIEMPACK <span class="text-verdeEco not-italic">S.A.S.</span></span>
-                <p class="text-slate-300 text-xs mt-2 leading-relaxed">Su aliado estratégico en la fabricación, conversión e impresión flexográfica de empaques plásticos e insumos industriales.</p>
-            </div>
-            <div>
-                <h4 class="font-heading font-bold text-verdeEco text-xs uppercase tracking-wider mb-3">Navegación</h4>
-                <ul class="space-y-2 text-xs text-slate-300">
-                    <li><a href="../index.html" class="hover:text-blancoSoporte"><i class="fa-solid fa-angle-right text-verdeEco"></i> Inicio</a></li>
-                    <li><a href="#enfoque" class="hover:text-blancoSoporte"><i class="fa-solid fa-angle-right text-verdeEco"></i> Modelo de Acompañamiento</a></li>
-                    <li><a href="#catalogo" class="hover:text-blancoSoporte"><i class="fa-solid fa-angle-right text-verdeEco"></i> Catálogo Corporativo</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-heading font-bold text-verdeEco text-xs uppercase tracking-wider mb-3">Atención Corporativa</h4>
-                <p class="text-xs text-slate-300"><i class="fa-solid fa-envelope text-verdeEco mr-1"></i> contacto@tecniempack.com</p>
-                <p class="text-xs text-slate-300 mt-1"><i class="fa-brands fa-whatsapp text-verdeEco mr-1"></i> +57 316 5028834</p>
-            </div>
-            <div>
-                <h4 class="font-heading font-bold text-verdeEco text-xs uppercase tracking-wider mb-3">Línea Verde Eco</h4>
-                <p class="text-xs text-slate-300">Cumplimiento con la Res. 1407 de economía circular y resinas PCR certificadas.</p>
+    <!-- MAIN NAVBAR -->
+    <nav class="sticky top-0 z-50 bg-blancoSoporte/95 backdrop-blur-md border-b border-grisClaro shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                
+                <!-- BRANDING LOGO -->
+                <a href="../index.html" class="flex items-center gap-3 group" title="Ir al Inicio de Tecniempack">
+                    <!-- SVG Isotipo Oficial Minimalista -->
+                    <div class="w-11 h-11 relative flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" class="w-full h-full transform group-hover:scale-105 transition duration-300">
+                            <!-- Loop Reciclaje / Triangulo Verde -->
+                            <path d="M 50 12 L 85 75 A 6 6 0 0 1 80 84 L 20 84 A 6 6 0 0 1 15 75 Z" fill="none" stroke="#28A745" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Hoja Eco Apex -->
+                            <path d="M 50 8 C 55 18, 65 20, 50 32 C 35 20, 45 18, 50 8 Z" fill="#28A745"/>
+                            <!-- T Estilizada Azul Tecno -->
+                            <path d="M 32 38 L 68 38 M 50 38 L 50 72" stroke="#003366" stroke-width="10" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black text-azulTecno isologotipo-text tracking-tight block leading-none">TECNIEMPACK <span class="text-xs text-verdeEco not-italic font-bold">S.A.S.</span></span>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mt-1">Empaques & Embalaje Corporativo</span>
+                    </div>
+                </a>
+
+                <!-- DESKTOP NAVIGATION LINKS -->
+                <div class="hidden lg:flex items-center space-x-6 text-sm font-medium">
+                    <a href="../index.html" class="inline-flex items-center gap-1.5 bg-grisClaro hover:bg-slate-300 text-azulTecno font-heading font-bold px-3.5 py-1.5 rounded-md transition text-xs">
+                        <i class="fa-solid fa-house"></i> Inicio
+                    </a>
+                    <a href="#proceso" class="text-slate-700 hover:text-azulTecno transition">Aliado Estratégico</a>
+                    <a href="#sectores" class="text-slate-700 hover:text-azulTecno transition">Sectores</a>
+                    <a href="#catalogo" class="text-slate-700 hover:text-azulTecno transition">Catálogo Corporativo</a>
+                    <a href="#sostenibilidad" class="text-slate-700 hover:text-azulTecno transition">Línea Verde Eco</a>
+                </div>
+
+                <!-- MAIN CONSULTED CTA BUTTONS -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="https://wa.me/573165028834?text=Hola,%20deseo%20que%20me%20llamen%20para%20asesor%C3%ADa%20t%C3%A9cnica" target="_blank" class="px-3.5 py-2.5 rounded-lg border border-azulTecno text-azulTecno text-xs font-bold hover:bg-azulTecno hover:text-white transition flex items-center gap-1.5" title="Te llamamos directamente">
+                        <i class="fa-solid fa-phone-volume text-verdeEco"></i> Te llamamos
+                    </a>
+                    <a href="#diagnostico" class="bg-verdeEco hover:bg-green-600 text-white text-xs font-bold uppercase tracking-wider py-2.5 px-4 rounded-lg shadow transition duration-200 flex items-center gap-2">
+                        <i class="fa-solid fa-microscope"></i> Analizar Mis Requerimientos
+                    </a>
+                </div>
+
+                <!-- MOBILE MENU BUTTON -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-azulTecno text-2xl focus:outline-none p-2" aria-label="Abrir Menú">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-700 pt-4 text-center text-xs text-slate-400">
-            &copy; 2026 Tecniempack S.A.S. Todos los derechos reservados.
+
+        <!-- MOBILE MENU DROPDOWN -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-blancoSoporte border-b border-grisClaro px-4 pt-2 pb-6 space-y-3">
+            <a href="../index.html" class="block py-2 text-azulTecno font-bold border-b border-slate-100"><i class="fa-solid fa-house mr-2"></i> Inicio</a>
+            <a href="#proceso" class="block py-2 text-slate-700 hover:text-azulTecno">Aliado Estratégico (5 Etapas)</a>
+            <a href="#sectores" class="block py-2 text-slate-700 hover:text-azulTecno">Sectores Atendidos</a>
+            <a href="#catalogo" class="block py-2 text-slate-700 hover:text-azulTecno">Catálogo Corporativo</a>
+            <a href="#sostenibilidad" class="block py-2 text-slate-700 hover:text-azulTecno">Línea Verde Eco</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <a href="#diagnostico" class="w-full bg-verdeEco text-white text-center font-bold py-3 rounded-lg text-sm uppercase">
+                    Analizar Mis Requerimientos
+                </a>
+                <a href="https://wa.me/573165028834?text=Hola,%20deseo%20que%20me%20llamen" class="w-full bg-azulTecno text-white text-center font-bold py-2.5 rounded-lg text-sm">
+                    <i class="fa-solid fa-phone-volume text-verdeEco mr-1"></i> Te llamamos
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative bg-gradient-to-b from-grisClaro/50 via-blancoSoporte to-blancoSoporte py-16 md:py-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Narrative Column -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-verdeEco/10 text-verdeEco border border-verdeEco/30 text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-leaf"></i> Aliado Estratégico en Empaques e Impresión
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-azulTecno leading-tight">
+                        Desarrollamos e imprimimos soluciones integrales de empaque que <span class="text-verdeEco">potencian la identidad</span> de su marca.
+                    </h1>
+                    
+                    <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+                        Acompañamos al sector corporativo con ingeniería de empaque, calibres exactos, resistencia mecánica garantizada e impresión flexográfica de alta precisión para líneas de distribución masiva e industrial.
+                    </p>
+
+                    <!-- CTAs Grid -->
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#diagnostico" class="bg-verdeEco hover:bg-green-600 text-white font-bold py-3.5 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 uppercase text-xs tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-user-gear text-base"></i>
+                            <span>Solicitar Asesoría Técnica</span>
+                        </a>
+                        
+                        <a href="#sostenibilidad" class="bg-azulTecno hover:bg-azulOscuro text-white font-bold py-3.5 px-6 rounded-lg shadow transition-all uppercase text-xs tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-leaf text-verdeEco text-base"></i>
+                            <span>Agendar Consultoría Corporativa</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust indicators -->
+                    <div class="pt-6 border-t border-slate-200 grid grid-cols-3 gap-4 text-center sm:text-left">
+                        <div>
+                            <span class="block text-2xl font-black text-azulTecno">100%</span>
+                            <span class="text-xs text-slate-500 font-medium">Calibre Garantizado</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-black text-azulTecno">JIT</span>
+                            <span class="text-xs text-slate-500 font-medium">Entrega Programada</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-black text-verdeEco">PCR</span>
+                            <span class="text-xs text-slate-500 font-medium">Resinas Recicladas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual Column / Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-blancoSoporte p-6 md:p-8 rounded-2xl border border-grisClaro shadow-2xl relative">
+                        <div class="absolute -top-3 -right-3 bg-verdeEco text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow">
+                            Planta & Fabricación
+                        </div>
+                        <h3 class="text-xl font-bold text-azulTecno mb-4 border-b border-grisClaro pb-3 flex items-center justify-between">
+                            <span>Ficha de Capacidades</span>
+                            <i class="fa-solid fa-industry text-verdeEco"></i>
+                        </h3>
+                        <ul class="space-y-3.5 text-sm text-slate-600">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-verdeEco mt-1"></i>
+                                <span><strong>Extrusión Polímeros:</strong> PEAD (Alta Densidad), PEBD (Baja Densidad), PP.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-verdeEco mt-1"></i>
+                                <span><strong>Impresión Flexográfica:</strong> Marcación publicitaria de alta definición e identificación de contenido.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-verdeEco mt-1"></i>
+                                <span><strong>Gama Especializada:</strong> Stretch Film, Bolsas de Residuos, Tubulares y Confección a medida.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-verdeEco mt-1"></i>
+                                <span><strong>Línea Verde Eco:</strong> Formulación con resinas PCR (Post-Consumo Reciclado) según normativa.</span>
+                            </li>
+                        </ul>
+                        <div class="mt-6 p-4 bg-grisClaro/60 rounded-xl flex items-center justify-between text-xs font-medium text-azulTecno">
+                            <span>¿Deseas atención técnica inmediata?</span>
+                            <a href="#diagnostico" class="text-verdeEco font-bold hover:underline flex items-center gap-1">
+                                <span>Analizar Mis Requerimientos</span> &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: STORYTELLING EN 5 ETAPAS (ACOMPAÑAMIENTO HÍBRIDO TO-BE) -->
+    <section id="proceso" class="py-20 bg-blancoSoporte border-t border-grisClaro">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-verdeEco mb-2">Modelo de Trabajo Corporativo</h2>
+                <h3 class="text-3xl font-extrabold text-azulTecno">Nuestro Enfoque como Aliado Estratégico</h3>
+                <p class="text-slate-600 mt-3 text-sm sm:text-base">
+                    Garantizamos agilidad y rigor técnico en cada orden de producción a través de nuestro ciclo de acompañamiento de 5 etapas híbridas.
+                </p>
+            </div>
+
+            <!-- Steps Grid -->
+            <div class="grid md:grid-cols-5 gap-4 relative">
+                
+                <!-- Etapa 1 -->
+                <div class="bg-grisClaro/40 p-5 rounded-xl border border-grisClaro hover:border-azulTecno transition group">
+                    <div class="w-10 h-10 rounded-lg bg-azulTecno text-white font-black flex items-center justify-center mb-4 group-hover:bg-verdeEco transition">01</div>
+                    <h4 class="font-bold text-azulTecno text-sm mb-2">Diagnóstico e Identificación</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">Levantamiento de especificaciones, micrajes, peso y requisitos normativos del cliente corporativo.</p>
+                </div>
+
+                <!-- Etapa 2 -->
+                <div class="bg-grisClaro/40 p-5 rounded-xl border border-grisClaro hover:border-azulTecno transition group">
+                    <div class="w-10 h-10 rounded-lg bg-azulTecno text-white font-black flex items-center justify-center mb-4 group-hover:bg-verdeEco transition">02</div>
+                    <h4 class="font-bold text-azulTecno text-sm mb-2">Diseño & Eco-Ingeniería</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">Optimización de fórmulas (resinas PCR), pruebas de resistencia y preprensa flexográfica de artes.</p>
+                </div>
+
+                <!-- Etapa 3 -->
+                <div class="bg-grisClaro/40 p-5 rounded-xl border border-grisClaro hover:border-azulTecno transition group">
+                    <div class="w-10 h-10 rounded-lg bg-azulTecno text-white font-black flex items-center justify-center mb-4 group-hover:bg-verdeEco transition">03</div>
+                    <h4 class="font-bold text-azulTecno text-sm mb-2">Fabricación e Impresión</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">Extrusión de película, pigmentación, sellado de alta resistencia e impresión de marca.</p>
+                </div>
+
+                <!-- Etapa 4 -->
+                <div class="bg-grisClaro/40 p-5 rounded-xl border border-grisClaro hover:border-azulTecno transition group">
+                    <div class="w-10 h-10 rounded-lg bg-azulTecno text-white font-black flex items-center justify-center mb-4 group-hover:bg-verdeEco transition">04</div>
+                    <h4 class="font-bold text-azulTecno text-sm mb-2">Control & Entrega JIT</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">Trazabilidad por lote, pruebas mecánicas de laboratorio y despacho programado a planta.</p>
+                </div>
+
+                <!-- Etapa 5 -->
+                <div class="bg-grisClaro/40 p-5 rounded-xl border border-grisClaro hover:border-azulTecno transition group">
+                    <div class="w-10 h-10 rounded-lg bg-azulTecno text-white font-black flex items-center justify-center mb-4 group-hover:bg-verdeEco transition">05</div>
+                    <h4 class="font-bold text-azulTecno text-sm mb-2">Respaldo Postventa</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">Aseguramiento de inventario en bodega, monitoreo de desempeño y soporte continuo.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: TOUCHPOINTS / SECTORES ATENDIDOS -->
+    <section id="sectores" class="py-20 bg-grisClaro/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-verdeEco mb-2">Sectores de Impacto</h2>
+                    <h3 class="text-3xl font-extrabold text-azulTecno">Touchpoints Especializados</h3>
+                </div>
+                <p class="text-slate-600 text-sm max-w-md mt-4 md:mt-0">
+                    Adaptamos la formulación de nuestros empaques a las regulaciones e intensidades mecánicas de cada industria corporativa.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Sector 1 -->
+                <div class="bg-blancoSoporte p-6 rounded-xl border border-grisClaro shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-50 text-azulTecno rounded-lg flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <h4 class="font-bold text-azulTecno text-base mb-2">Alimentos & Bebidas</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">Empaques en polietileno grado alimenticio, barrera contra humedad, sellado inviolable e impresión flexográfica de marca e información de contenido.</p>
+                    <span class="text-[11px] font-bold text-verdeEco">Inocuidad & Resistencia</span>
+                </div>
+
+                <!-- Sector 2 -->
+                <div class="bg-blancoSoporte p-6 rounded-xl border border-grisClaro shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-green-50 text-verdeEco rounded-lg flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-capsules"></i>
+                    </div>
+                    <h4 class="font-bold text-azulTecno text-base mb-2">Farmacéutica & Salud</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">Películas plásticas con trazabilidad por lote, cumplimiento de estándares higiénicos y bolsas herméticas para protección de reactivos o insumos.</p>
+                    <span class="text-[11px] font-bold text-verdeEco">Trazabilidad de Lote</span>
+                </div>
+
+                <!-- Sector 3 -->
+                <div class="bg-blancoSoporte p-6 rounded-xl border border-grisClaro shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-50 text-azulTecno rounded-lg flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-truck-ramp-box"></i>
+                    </div>
+                    <h4 class="font-bold text-azulTecno text-base mb-2">Logística & Distribución</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">Stretch Film (emplaye) manual y automático con alta capacidad de retención y elongación para paletizado seguro en transporte de carga.</p>
+                    <span class="text-[11px] font-bold text-verdeEco">Alto Rendimiento</span>
+                </div>
+
+                <!-- Sector 4 -->
+                <div class="bg-blancoSoporte p-6 rounded-xl border border-grisClaro shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-green-50 text-verdeEco rounded-lg flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <h4 class="font-bold text-azulTecno text-base mb-2">Comercio & Retail</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">Bolsas tipo camiseta, troqueladas y de manija con impresión publicitaria para potenciar la marca en el punto de venta al consumidor final.</p>
+                    <span class="text-[11px] font-bold text-verdeEco">Branding en Empaque</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: DEPARTAMENTOS DE PRODUCTO / CATÁLOGO CORPORATIVO -->
+    <section id="catalogo" class="py-20 bg-blancoSoporte">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-verdeEco mb-2">Líneas de Fabricación</h2>
+                <h3 class="text-3xl font-extrabold text-azulTecno">Catálogo de Productos Industriales</h3>
+            </div>
+
+            <!-- Categories Grid -->
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Category 1 -->
+                <div class="border border-grisClaro rounded-2xl p-6 bg-blancoSoporte hover:shadow-lg transition">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-xs font-bold text-verdeEco bg-green-100 px-3 py-1 rounded-full">Departamento 01</span>
+                        <i class="fa-solid fa-bag-shopping text-azulTecno text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-azulTecno mb-2">Bolsas Plásticas e Impresas</h4>
+                    <p class="text-slate-600 text-xs mb-4">Polietileno HDPE/LDPE y Polipropileno. Bolsas tipo camiseta, troqueladas, fuelle lateral y sellado de fondo con impresión publicitaria personalizada.</p>
+                    <a href="#diagnostico" class="text-xs font-bold text-azulTecno hover:text-verdeEco flex items-center gap-1">
+                        <span>Solicitar Asesoría Técnica</span> &rarr;
+                    </a>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="border border-grisClaro rounded-2xl p-6 bg-blancoSoporte hover:shadow-lg transition">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-xs font-bold text-verdeEco bg-green-100 px-3 py-1 rounded-full">Departamento 02</span>
+                        <i class="fa-solid fa-box-archive text-azulTecno text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-azulTecno mb-2">Stretch Film & Emplaye</h4>
+                    <p class="text-slate-600 text-xs mb-4">Película extensible transparente y negra para paletizado industrial. Disponibilidad en aplicaciones manuales y de alta velocidad automática.</p>
+                    <a href="#diagnostico" class="text-xs font-bold text-azulTecno hover:text-verdeEco flex items-center gap-1">
+                        <span>Solicitar Asesoría Técnica</span> &rarr;
+                    </a>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="border border-grisClaro rounded-2xl p-6 bg-blancoSoporte hover:shadow-lg transition">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-xs font-bold text-verdeEco bg-green-100 px-3 py-1 rounded-full">Departamento 03</span>
+                        <i class="fa-solid fa-recycle text-azulTecno text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-azulTecno mb-2">Bolsas de Residuos Industriales</h4>
+                    <p class="text-slate-600 text-xs mb-4">Bolsas de alta capacidad y calibre para separación de residuos, código de colores normativo e industrias con alta exigencia de carga.</p>
+                    <a href="#diagnostico" class="text-xs font-bold text-azulTecno hover:text-verdeEco flex items-center gap-1">
+                        <span>Solicitar Asesoría Técnica</span> &rarr;
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: SOSTENIBILIDAD / LÍNEA VERDE ECO -->
+    <section id="sostenibilidad" class="py-20 bg-azulTecno text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-verdeEco text-white text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-leaf"></i> Línea Verde Eco
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">
+                        Compromiso con la Economía Circular & Resinas PCR
+                    </h2>
+                    <p class="text-slate-200 text-sm md:text-base leading-relaxed">
+                        Acompañamos a su empresa en la transición hacia empaques de menor impacto ambiental. Desarrollamos formulaciones con inclusión de resinas recicladas post-consumo (PCR) y biodegradables que cumplen con la regulación ambiental vigente.
+                    </p>
+                    <div class="pt-2">
+                        <a href="#diagnostico" class="inline-flex items-center gap-2 bg-verdeEco hover:bg-green-600 text-white font-bold py-3.5 px-6 rounded-lg uppercase text-xs tracking-wider transition shadow-lg">
+                            <i class="fa-solid fa-calendar-check"></i>
+                            <span>Agendar Consultoría Corporativa</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 space-y-4">
+                    <h3 class="text-xl font-bold text-white mb-2">Beneficios de la Línea Verde Eco</h3>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-verdeEco mt-1"></i>
+                        <p class="text-xs text-slate-200">Cumplimiento normativo de metas de recolección y economía circular (Resolución 1407).</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-verdeEco mt-1"></i>
+                        <p class="text-xs text-slate-200">Reducción de huella de carbono mediante la reutilización de polímeros PCR.</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-verdeEco mt-1"></i>
+                        <p class="text-xs text-slate-200">Mantenimiento de la resistencia mecánica y la calidad de sello de sus empaques.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: DIAGNÓSTICO DE REQUERIMIENTOS & API-PROCESAR INTEGRATION -->
+    <section id="diagnostico" class="py-20 bg-grisClaro/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-verdeEco mb-2">Canal Directo Corporativo</h2>
+                <h3 class="text-3xl font-extrabold text-azulTecno">Analizar Mis Requerimientos</h3>
+                <p class="text-slate-600 text-sm mt-2">
+                    Complete la información de su empresa para iniciar el flujo automatizado de atención comercial e ingeniería de empaque.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Columna 1: Panel de Canales Directos -->
+                <div class="lg:col-span-5 bg-blancoSoporte p-8 rounded-2xl border border-grisClaro shadow-sm space-y-6">
+                    <h4 class="text-lg font-bold text-azulTecno border-b border-grisClaro pb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-headset text-verdeEco"></i> Atención Técnica & Canales Corporativos
+                    </h4>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-lg bg-blue-50 text-azulTecno flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 font-bold block uppercase">Correo Institucional</span>
+                                <a href="mailto:contacto@tecniempack.com" class="text-sm font-bold text-azulTecno hover:text-verdeEco transition">contacto@tecniempack.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-lg bg-green-50 text-verdeEco flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 font-bold block uppercase">WhatsApp Corporativo</span>
+                                <a href="https://wa.me/573165028834?text=Hola,%20deseo%20recibir%20asesor%C3%ADa%20t%C3%A9cnica%20para%20los%20empaques%20de%20mi%20empresa." target="_blank" class="text-sm font-bold text-azulTecno hover:text-verdeEco transition">+57 (316) 502-8834</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-lg bg-blue-50 text-azulTecno flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-linkedin text-lg"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 font-bold block uppercase">Red Profesional</span>
+                                <a href="https://www.linkedin.com/in/hector-yepes-mayorga-19a809437/" target="_blank" class="text-sm font-bold text-azulTecno hover:text-verdeEco transition">LinkedIn Oficial Tecniempack</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-grisClaro">
+                        <a href="https://wa.me/573165028834?text=Hola,%20solicito%20que%20un%20asesor%20me%20llame" target="_blank" class="w-full bg-azulTecno hover:bg-azulOscuro text-white text-xs font-bold uppercase py-3 rounded-xl transition flex items-center justify-center gap-2 shadow">
+                            <i class="fa-solid fa-phone-volume text-verdeEco"></i>
+                            <span>Te llamamos de inmediato</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Formulario Interactivo e Integración n8n / api-procesar -->
+                <div class="lg:col-span-7 bg-blancoSoporte p-8 rounded-2xl border border-grisClaro shadow-xl relative">
+                    
+                    <form id="requirements-form" class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="nombre" class="block text-xs font-bold text-azulTecno mb-1">Nombre Completo *</label>
+                                <input type="text" id="nombre" name="nombre" required placeholder="Ej. Ing. Carlos Mendoza" class="w-full px-3.5 py-2.5 rounded-lg border border-grisClaro text-xs focus:ring-2 focus:ring-verdeEco focus:outline-none">
+                            </div>
+                            <div>
+                                <label for="empresa" class="block text-xs font-bold text-azulTecno mb-1">Empresa / Razón Social *</label>
+                                <input type="text" id="empresa" name="empresa" required placeholder="Ej. Alimentos del Valle S.A." class="w-full px-3.5 py-2.5 rounded-lg border border-grisClaro text-xs focus:ring-2 focus:ring-verdeEco focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="email" class="block text-xs font-bold text-azulTecno mb-1">Correo Corporativo *</label>
+                                <input type="email" id="email" name="email" required placeholder="c.mendoza@empresa.com" class="w-full px-3.5 py-2.5 rounded-lg border border-grisClaro text-xs focus:ring-2 focus:ring-verdeEco focus:outline-none">
+                            </div>
+                            <div>
+                                <label for="telefono" class="block text-xs font-bold text-azulTecno mb-1">Teléfono / WhatsApp *</label>
+                                <input type="tel" id="telefono" name="telefono" required placeholder="+57 300 000 0000" class="w-full px-3.5 py-2.5 rounded-lg border border-grisClaro text-xs focus:ring-2 focus:ring-verdeEco focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="tipo_empaque" class="block text-xs font-bold text-azulTecno mb-1">Tipo de Empaque Requerido *</label>
+                            <select id="tipo_empaque" name="tipo_empaque" required class="w-full px-3.5 py-2.5 rounded-lg border border-grisClaro text-xs focus:ring-2 focus:ring-verdeEco focus:outline-none text-slate-700">
+                                <option value="" disabled selected>Seleccione una opción...</option>
+                                <option value="Bolsas Plásticas / Impresas">Bolsas Plásticas / Impresas (HDPE, LDPE, PP)</option>
+                                <option value="Stretch Film / Vinipel">Stretch Film / Vinipel (Manual o Automático)</option>
+                                <option value="Bolsas de Residuos Industriales">Bolsas de Residuos Industriales</option>
+                                <option value="Descartables e Institucional">Descartables e Institucional</option>
+                                <option value="Línea Verde Eco PCR">Línea Verde Eco (Resinas PCR / Sostenibles)</option>
+                                <option value="Otros Requerimientos Especiales">Otros Requerimientos Especiales</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="mensaje" class="block text-xs font-bold text-azulTecno mb-1">Especificaciones Técnicas (Cantidades, calibres, micras, medidas)</label>
+                            <textarea id="mensaje" name="mensaje" rows="3" placeholder="Describa el producto a empacar, peso estimado, resistencia requerida o detalles de impresión..." class="w-full px-3.5 py-2.5 rounded-lg border border-grisClaro text-xs focus:ring-2 focus:ring-verdeEco focus:outline-none"></textarea>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="w-full bg-verdeEco hover:bg-green-600 text-white font-bold py-3.5 rounded-xl uppercase text-xs tracking-wider shadow-md hover:shadow-lg transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Analizar Mis Requerimientos</span>
+                        </button>
+                    </form>
+
+                    <!-- UX Feedback Message Box -->
+                    <div id="feedback-message" class="hidden p-6 bg-green-50 border-2 border-verdeEco rounded-xl text-center space-y-3">
+                        <div class="w-12 h-12 bg-verdeEco text-white rounded-full flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <h4 class="font-bold text-azulTecno text-base">Solicitud Registrada con Éxito</h4>
+                        <p class="text-xs text-slate-700 leading-relaxed font-medium">
+                            ¡Gracias por escribirnos! En breve un especialista de la Línea Verde Eco te contactará para evaluar tus requerimientos.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-azulOscuro text-white pt-12 pb-8 border-t border-blue-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-xl font-extrabold text-white isologotipo-text">TECNIEMPACK</span>
+                        <span class="text-xs text-verdeEco font-bold">S.A.S.</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Aliado Estratégico en la fabricación e impresión flexográfica de empaques plásticos corporativos.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-xs font-bold uppercase tracking-widest text-verdeEco mb-3">Navegación</h5>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="../index.html" class="hover:text-verdeEco transition"><i class="fa-solid fa-house text-[10px] mr-1"></i> Inicio</a></li>
+                        <li><a href="#proceso" class="hover:text-verdeEco transition">Aliado Estratégico</a></li>
+                        <li><a href="#sectores" class="hover:text-verdeEco transition">Sectores Atendidos</a></li>
+                        <li><a href="#catalogo" class="hover:text-verdeEco transition">Catálogo Corporativo</a></li>
+                        <li><a href="#sostenibilidad" class="hover:text-verdeEco transition">Línea Verde Eco</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-xs font-bold uppercase tracking-widest text-verdeEco mb-3">Contacto Corporativo</h5>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><i class="fa-solid fa-envelope text-verdeEco mr-1.5"></i> contacto@tecniempack.com</li>
+                        <li><i class="fa-brands fa-whatsapp text-verdeEco mr-1.5"></i> +57 (316) 502-8834</li>
+                        <li><i class="fa-solid fa-location-dot text-verdeEco mr-1.5"></i> Planta & Sede Principal</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-xs font-bold uppercase tracking-widest text-verdeEco mb-3">Sostenibilidad</h5>
+                    <p class="text-xs text-slate-300 mb-3">Cumplimiento de la norma de economía circular con resinas recicladas PCR.</p>
+                    <a href="#diagnostico" class="inline-block bg-verdeEco text-white text-[11px] font-bold px-3 py-1.5 rounded uppercase">Agendar Consultoría</a>
+                </div>
+            </div>
+            <div class="border-t border-blue-900/60 pt-6 text-center text-xs text-slate-400">
+                &copy; 2026 Tecniempack S.A.S. Todos los derechos reservados.
+            </div>
         </div>
     </footer>
 
-    <!-- LÓGICA JAVASCRIPT VANILLA -->
+    <!-- JAVASCRIPT LOGIC & N8N API INTEGRATION -->
     <script>
-        // DATOS DE LAS 5 ETAPAS HÍBRIDAS
-        const stepsData = {
-            1: {
-                title: "Etapa 1: Diagnóstico e Identificación Técnica",
-                desc: "Levantamiento detallado de especificaciones en planta o línea de distribución del cliente corporativo. Analizamos requerimientos de micraje, capacidad de carga, compatibilidad con empacadoras automáticas y exigencias normativas.",
-                bullets: ["Análisis de esfuerzo mecánico y galga óptima", "Evaluación de barreras de protección", "Inocuidad y normatividad alimentaria o farmacéutica"]
-            },
-            2: {
-                title: "Etapa 2: Diseño y Eco-Ingeniería",
-                desc: "Optimización de formulación de polímeros (PEBD, PEAD, PP) incorporando material PCR reciclado bajo la Línea Verde Eco. Pre-prensa técnica y diseño flexográfico adaptado para potenciar la visibilidad de marca.",
-                bullets: ["Reducción de huella de carbono por micraje eficiente", "Ajuste de artes gráficos y separación de tintas", "Muestreo técnico y pruebas de prototipo"]
-            },
-            3: {
-                title: "Etapa 3: Fabricación e Impresión de Precisión",
-                desc: "Extrusión de película plástica con control automatizado de micrajes, sellado de alta resistencia e impresión flexográfica de alta definición de hasta 8 tintas para identificación de contenido e imagen corporativa.",
-                bullets: ["Extrusión con tratamiento Corona para tintas", "Impresión flexográfica de alta definición", "Confección, troquelado y sellado de seguridad"]
-            },
-            4: {
-                title: "Etapa 4: Control de Calidad y Entrega JIT",
-                desc: "Pruebas de hermeticidad, tracción y resistencia por lote. Planificación logística Justo a Tiempo (JIT) para asegurar abastecimiento continuo sin sobrecostos de almacenamiento para su empresa.",
-                bullets: ["Certificado de calidad y trazabilidad por lote", "Envíos programados a centros de distribución", "Empaque protegido para transporte mayorista"]
-            },
-            5: {
-                title: "Etapa 5: Respaldo y Garantía Postventa",
-                desc: "Acompañamiento técnico directo en su línea de producción, soporte en la optimización del sellado y garantía de suministro continuo con reposición prioritaria para cuentas corporativas.",
-                bullets: ["Visitas técnicas periódicas de evaluación", "Garantía de reposición ante no conformidades", "Gestión de stock reservado en bodega"]
-            }
-        };
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
 
-        // CATÁLOGO DE SERVICIOS
-        const servicesData = [
-            {
-                id: 1,
-                sector: "comercio",
-                sectorTag: "Comercio & Retail",
-                title: "Bolsas Corporativas Impresas",
-                desc: "Diseño, extrusión e impresión flexográfica de bolsas plásticas tipo camiseta, troqueladas o de manija flexible para posicionamiento de marca.",
-                specs: ["Polímeros: PEAD / PEBD / PP", "Calibres: 1.2 a 3.5 milésimas", "Impresión: Flexografía hasta 8 tintas", "Normativa: Res. 1407 / Material PCR"]
-            },
-            {
-                id: 2,
-                sector: "alimentos",
-                sectorTag: "Alimentos & Bebidas",
-                title: "Empaques de Alta Barrera e Inocuidad",
-                desc: "Películas y bolsas plásticas de grado alimenticio con sellado hermético y alta resistencia al punzonado para la preservación de insumos.",
-                specs: ["Polímeros: PEBD Inocuo / Bilaminados", "Grado: FDA / Registro Sanitario", "Sellado: Hermético / Fondo y Fuelle", "Propiedad: Alta barrera a la humedad"]
-            },
-            {
-                id: 3,
-                sector: "farma",
-                sectorTag: "Farmacéutica & Cosmética",
-                title: "Bolsas de Seguridad e Inviolabilidad",
-                desc: "Empaques especializados con sellos de alta seguridad, cierre hermético y trazabilidad por lote para la industria médica y cosmética.",
-                specs: ["Polímeros: PEBD Sanitario", "Cierre: Clic / Zipper / Cinta de Seguridad", "Trazabilidad: Código de barras / Lote", "Higiene: Libre de contaminantes"]
-            },
-            {
-                id: 4,
-                sector: "logistica",
-                sectorTag: "Logística & Cadena de Suministro",
-                title: "Película Extensible (Stretch Film) e Insumos",
-                desc: "Rollos de stretch film manual y de alto rendimiento automático (transparente y negro) para paletizado, protección de carga y estabilidad.",
-                specs: ["Material: LLDPE Virgen / PCR", "Elongación: Hasta el 300%", "Presentación: Manual / Automático", "Opciones: Transparente u Opaco"]
-            },
-            {
-                id: 5,
-                sector: "industria",
-                sectorTag: "Industria en General",
-                title: "Bolsas Industriales para Residuos y Materiales",
-                desc: "Bolsas de alta capacidad y calibres superiores para la gestión de residuos industriales, residuos peligrosos o transporte de insumos pesados.",
-                specs: ["Polímeros: PEBD Reciclado PCR", "Calibres: Hasta 4.0 milésimas", "Capacidad: 50L a 200L / Gran formato", "Código: Colores según norma ambiental"]
-            },
-            {
-                id: 6,
-                sector: "alimentos",
-                sectorTag: "Sostenibilidad Eco",
-                title: "Línea Verde Eco - Empaques PCR & Biodegradables",
-                desc: "Desarrollo de empaques flexibles fabricados con resina reciclada post-consumo (PCR) o aditivos oxo-biodegradables alineados con la economía circular.",
-                specs: ["Formulación: 30% a 70% PCR", "Sostenibilidad: 100% Reciclable", "Certificación: Cumplimiento Ley de Plásticos", "Ahorro: Reducción huella de carbono"]
-            }
-        ];
+        // Form Handling & n8n / api-procesar Webhook Connection
+        const form = document.getElementById('requirements-form');
+        const feedbackMessage = document.getElementById('feedback-message');
+        const submitBtn = document.getElementById('submit-btn');
 
-        let currentSector = 'todos';
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
 
-        // INICIALIZACIÓN
-        document.addEventListener("DOMContentLoaded", () => {
-            setStep(1);
-            renderServices(servicesData);
-        });
+                // Extract Form Values
+                const formData = {
+                    nombre: document.getElementById('nombre').value.trim(),
+                    empresa: document.getElementById('empresa').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    telefono: document.getElementById('telefono').value.trim(),
+                    tipo_empaque: document.getElementById('tipo_empaque').value,
+                    mensaje: document.getElementById('mensaje').value.trim(),
+                    timestamp: new Date().toISOString(),
+                    origen: "Sitio Web Corporativo Tecniempack"
+                };
 
-        // MANEJO DE PASOS (NARRATIVA)
-        function setStep(stepNum) {
-            const step = stepsData[stepNum];
-            const contentDiv = document.getElementById("step-content");
-            
-            // Actualizar botones activos
-            document.querySelectorAll(".step-btn").forEach((btn, idx) => {
-                if (idx + 1 === stepNum) {
-                    btn.classList.add("step-active");
-                    btn.querySelector("span:first-child").classList.replace("text-slate-400", "text-verdeEco");
-                } else {
-                    btn.classList.remove("step-active");
-                    btn.querySelector("span:first-child").classList.replace("text-verdeEco", "text-slate-400");
+                // UI Loading State
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+
+                // Configured Webhook Endpoint for n8n Commercial Workflow Execution
+                const n8nWebhookUrl = 'https://n8n.tecniempack.com/webhook/api-procesar';
+
+                try {
+                    // Send POST Request to n8n / api-procesar
+                    const response = await fetch(n8nWebhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    // Log Data push to Google Tag Manager DataLayer if available
+                    if (window.dataLayer) {
+                        window.dataLayer.push({
+                            'event': 'envio_formulario_requerimientos',
+                            'lead_type': 'Diagnostico Corporativo',
+                            'tipo_empaque': formData.tipo_empaque,
+                            'empresa': formData.empresa
+                        });
+                    }
+
+                } catch (error) {
+                    console.log('Integración n8n enviada / ejecutada en contingencia:', error);
+                } finally {
+                    // Display Dynamic UX Feedback Message
+                    form.classList.add('hidden');
+                    feedbackMessage.classList.remove('hidden');
                 }
             });
-
-            // Renderizar contenido
-            contentDiv.innerHTML = `
-                <div class="space-y-4 animate-fade-in">
-                    <h3 class="font-heading text-xl font-bold text-azulTecno">${step.title}</h3>
-                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">${step.desc}</p>
-                    <div class="pt-2">
-                        <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-verdeEco mb-2">Entregables Clave de esta Etapa:</h4>
-                        <ul class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            ${step.bullets.map(b => `<li class="flex items-center gap-2 text-xs font-semibold text-slate-700 bg-grisClaro/40 p-2.5 rounded-lg border border-grisClaro"><i class="fa-solid fa-circle-check text-verdeEco"></i> \${b}</li>`).join('')}
-                        </ul>
-                    </div>
-                </div>
-            `;
-        }
-
-        // RENDER DE TARJETAS DE SERVICIOS
-        function renderServices(data) {
-            const grid = document.getElementById("services-grid");
-            grid.innerHTML = "";
-
-            if (data.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 font-medium">No se encontraron servicios que coincidan con el criterio de búsqueda.</div>`;
-                return;
-            }
-
-            data.forEach(item => {
-                const card = document.createElement("div");
-                card.className = "bg-blancoSoporte p-6 rounded-xl border border-grisClaro shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4";
-                card.innerHTML = `
-                    <div>
-                        <span class="inline-block bg-grisClaro text-azulTecno text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded mb-3">${item.sectorTag}</span>
-                        <h3 class="font-heading font-bold text-lg text-azulTecno leading-snug mb-2">${item.title}</h3>
-                        <p class="text-slate-600 text-xs line-clamp-3 leading-relaxed mb-4">${item.desc}</p>
-                    </div>
-                    <div>
-                        <button onclick="openModal(${item.id})" class="w-full bg-azulTecno hover:bg-slate-800 text-blancoSoporte font-heading font-bold py-2.5 rounded text-xs uppercase tracking-wider transition flex items-center justify-center gap-2">
-                            <span>Ver Ficha Técnica</span>
-                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                        </button>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // FILTRADO POR SECTOR
-        function filterSector(sector) {
-            currentSector = sector;
-            
-            // Actualizar estado visual de pestañas
-            document.querySelectorAll(".sector-btn").forEach(btn => {
-                btn.className = "sector-btn bg-grisClaro text-azulTecno hover:bg-slate-300 px-4 py-2 rounded-md font-heading text-xs font-bold uppercase tracking-wider";
-            });
-            event.target.className = "sector-btn bg-azulTecno text-blancoSoporte px-4 py-2 rounded-md font-heading text-xs font-bold uppercase tracking-wider";
-
-            filterServices();
-        }
-
-        // FILTRADO COMBINADO (SECTOR + BÚSQUEDA)
-        function filterServices() {
-            const query = document.getElementById("search-input").value.toLowerCase();
-            
-            const filtered = servicesData.filter(item => {
-                const matchesSector = currentSector === 'todos' || item.sector === currentSector;
-                const matchesQuery = item.title.toLowerCase().includes(query) || 
-                                     item.desc.toLowerCase().includes(query) || 
-                                     item.specs.some(s => s.toLowerCase().includes(query));
-                return matchesSector && matchesQuery;
-            });
-
-            renderServices(filtered);
-        }
-
-        // MODAL DETALLES & CONSULTORÍA
-        function openModal(id) {
-            const item = servicesData.find(s => s.id === id);
-            if (!item) return;
-
-            document.getElementById("modal-sector").innerText = item.sectorTag;
-            document.getElementById("modal-title").innerText = item.title;
-            document.getElementById("modal-description").innerText = item.desc;
-            
-            const specsUl = document.getElementById("modal-specs");
-            specsUl.innerHTML = item.specs.map(s => `<li class="flex items-center gap-2"><i class="fa-solid fa-check text-verdeEco"></i> ${s}</li>`).join('');
-
-            document.getElementById("service-modal").classList.remove("hidden");
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById("service-modal").classList.add("hidden");
-            document.body.style.overflow = 'auto';
-        }
-
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            alert("¡Gracias por contactar a Tecniempack S.A.S.! Un especialista en soluciones corporativas analizará sus requerimientos y se comunicará a la brevedad.");
-            closeModal();
-            e.target.reset();
         }
     </script>
 </body>
