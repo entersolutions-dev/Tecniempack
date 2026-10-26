@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura de Precios, Benchmarking y Servicios | Tecniempack S.A.S.</title>
+    <!-- FontAwesome para iconografía industrial -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --azul-tecno: #003366;
+            --azul-hover: #1A5296;
+            --verde-eco: #28A745;
+            --verde-hover: #218838;
+            --gris-claro: #E2E8F0;
+            --gris-fondo: #F4F6F9;
+            --blanco: #FFFFFF;
+            --texto-oscuro: #1E293B;
+            --texto-mutado: #64748B;
+            --naranja-seguridad: #D97706;
+            --sombra-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transicion: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--gris-fondo);
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* HEADER & NAVEGACIÓN DE INICIO */
+        .top-navbar {
+            background-color: var(--blanco);
+            border-bottom: 2px solid var(--gris-claro);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo i {
+            font-size: 2rem;
+            color: var(--azul-tecno);
+        }
+
+        .brand-logo-text {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--azul-tecno);
+            letter-spacing: -0.5px;
+        }
+
+        .btn-inicio {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--azul-tecno);
+            color: var(--blanco);
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.875rem;
+            transition: var(--transicion);
+        }
+
+        .btn-inicio:hover {
+            background-color: var(--azul-hover);
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            background: linear-gradient(135deg, var(--azul-tecno) 0%, #001F3F 100%);
+            color: var(--blanco);
+            padding: 3.5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--gris-claro);
+            max-width: 850px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-kpis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .kpi-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 1.2rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .kpi-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--verde-eco);
+            display: block;
+        }
+
+        .kpi-label {
+            font-size: 0.85rem;
+            color: var(--gris-claro);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* NAVEGACIÓN POR PESTAÑAS PRINCIPALES */
+        .main-tabs-container {
+            max-width: 1200px;
+            margin: -1.5rem auto 2rem;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .main-tabs {
+            display: flex;
+            background: var(--blanco);
+            border-radius: 8px;
+            box-shadow: var(--sombra-card);
+            overflow: hidden;
+            border: 1px solid var(--gris-claro);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 1rem 1rem;
+            border: none;
+            background: var(--blanco);
+            color: var(--texto-oscuro);
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transicion);
+            border-bottom: 4px solid transparent;
+        }
+
+        .tab-button:not(:last-child) {
+            border-right: 1px solid var(--gris-claro);
+        }
+
+        .tab-button.active {
+            color: var(--azul-tecno);
+            border-bottom-color: var(--azul-tecno);
+            background-color: var(--gris-fondo);
+        }
+
+        .tab-button i {
+            font-size: 1.1rem;
+        }
+
+        .tab-content {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem 3rem;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* CARD DE CONTENIDO / TABLA */
+        .cost-section-card {
+            background: var(--blanco);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--sombra-card);
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--azul-tecno);
+        }
+
+        .section-header-title {
+            font-size: 1.4rem;
+            color: var(--azul-tecno);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-description {
+            font-size: 0.95rem;
+            color: var(--texto-mutado);
+            margin-bottom: 1.5rem;
+        }
+
+        /* METODOLOGÍA & FÓRMULAS CARD */
+        .formula-box {
+            background-color: #F8FAFC;
+            border: 1px solid #CBD5E1;
+            border-left: 4px solid var(--verde-eco);
+            padding: 1.25rem;
+            border-radius: 6px;
+            margin: 1rem 0 1.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            color: #0F172A;
+            line-height: 1.5;
+        }
+
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .explanation-card {
+            background: var(--gris-fondo);
+            border: 1px solid var(--gris-claro);
+            padding: 1.2rem;
+            border-radius: 8px;
+        }
+
+        .explanation-card h4 {
+            color: var(--azul-tecno);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .explanation-card p {
+            font-size: 0.88rem;
+            color: var(--texto-mutado);
+        }
+
+        /* TABLAS DE DATOS */
+        .data-table-container {
+            overflow-x: auto;
+        }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .custom-table th {
+            background-color: var(--azul-tecno);
+            color: var(--blanco);
+            padding: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .custom-table td {
+            padding: 0.9rem;
+            border-bottom: 1px solid var(--gris-claro);
+        }
+
+        .custom-table tr:nth-child(even) {
+            background-color: var(--gris-fondo);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .badge-piso { background: #E2E8F0; color: #334155; }
+        .badge-pauta { background: #D1E7DD; color: #0F5132; }
+        .badge-techo { background: #CFE2FF; color: #084298; }
+
+        .price-tecniempack {
+            font-weight: 800;
+            color: var(--verde-eco);
+        }
+
+        .price-competitor {
+            color: #DC3545;
+            font-weight: 600;
+        }
+
+        /* FILTROS & BÚSQUEDA B2B */
+        .filter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--blanco);
+            padding: 1.2rem;
+            border-radius: 8px;
+            box-shadow: var(--sombra-card);
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.7rem 1rem 0.7rem 2.5rem;
+            border: 1px solid var(--gris-claro);
+            border-radius: 6px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--texto-mutado);
+        }
+
+        .sector-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .btn-sector {
+            padding: 0.5rem 0.9rem;
+            border: 1px solid var(--gris-claro);
+            background: var(--blanco);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transicion);
+        }
+
+        .btn-sector.active, .btn-sector:hover {
+            background: var(--azul-tecno);
+            color: var(--blanco);
+            border-color: var(--azul-tecno);
+        }
+
+        /* GRILLA Y TARJETAS DE SERVICIOS */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--blanco);
+            border-radius: 8px;
+            box-shadow: var(--sombra-card);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--gris-claro);
+            transition: var(--transicion);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            background: var(--azul-tecno);
+            color: var(--blanco);
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-header i {
+            font-size: 1.5rem;
+            color: var(--verde-eco);
+        }
+
+        .card-body {
+            padding: 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            color: var(--texto-oscuro);
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .tag {
+            background: var(--gris-fondo);
+            color: var(--texto-mutado);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .btn-modal {
+            width: 100%;
+            padding: 0.7rem;
+            background: var(--verde-eco);
+            color: var(--blanco);
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transicion);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-modal:hover {
+            background: var(--verde-hover);
+        }
+
+        /* MODAL DE COTIZACIÓN */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background: var(--blanco);
+            width: 100%;
+            max-width: 650px;
+            border-radius: 8px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            background: var(--azul-tecno);
+            color: var(--blanco);
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--blanco);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .tech-spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+            background: var(--gris-fondo);
+            padding: 1rem;
+            border-radius: 6px;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid var(--gris-claro);
+            border-radius: 4px;
+            outline: none;
+        }
+
+        /* FOOTER BANNER */
+        .cta-footer-banner {
+            background: var(--gris-claro);
+            border-left: 5px solid var(--azul-tecno);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-tabs { flex-direction: column; }
+            .tech-spec-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA NAVEGACIÓN PRINCIPAL CON BOTÓN INICIO -->
+    <header class="top-navbar">
+        <a href="../index.html" class="brand-logo">
+            <i class="fa-solid fa-boxes-packing"></i>
+            <span class="brand-logo-text">TECNIEMPACK S.A.S.</span>
+        </a>
+        <a href="../index.html" class="btn-inicio">
+            <i class="fa-solid fa-house"></i> Inicio
+        </a>
+    </header>
+
+    <!-- HERO & PROMESA DE VALOR -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <h1 class="hero-title">Metodología de Precios, Benchmarking y Servicios Corporativos</h1>
+            <p class="hero-subtitle">Transparencia financiera en el cálculo de precios, comparación directa frente a la competencia de la industria e ingeniería en empaques flexibles.</p>
+            
+            <div class="hero-kpis">
+                <div class="kpi-card">
+                    <span class="kpi-number">WTI / USDCOP</span>
+                    <span class="kpi-label">Indexación Petroquímica en Tiempo Real</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-number">3 Bandas</span>
+                    <span class="kpi-label">Rangos de Seguridad (Piso, Pauta, Techo)</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-number">Micraje Exacto</span>
+                    <span class="kpi-label">Garantía sin Mermas frente a Mercado</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NAVEGACIÓN POR PESTAÑAS PRINCIPALES (REFACTORIZADA) -->
+    <div class="main-tabs-container">
+        <div class="main-tabs">
+            <button class="tab-button active" onclick="switchTab('calculo-benchmarking-tab', this)">
+                <i class="fa-solid fa-square-root-variable"></i> Metodología del Benchmarking
+            </button>
+            <button class="tab-button" onclick="switchTab('costos-tab', this)">
+                <i class="fa-solid fa-calculator"></i> Costos Tecniempack
+            </button>
+            <button class="tab-button" onclick="switchTab('competidores-tab', this)">
+                <i class="fa-solid fa-chart-line"></i> Comparativo de Mercado
+            </button>
+            <button class="tab-button" onclick="switchTab('catalogo-tab', this)">
+                <i class="fa-solid fa-layer-group"></i> Catálogo B2B
+            </button>
+        </div>
+    </div>
+
+    <!-- PESTAÑA NUEVA: EXPLICACIÓN DE ORIGEN Y CÁLCULO DE PRECIO DEL BENCHMARKING -->
+    <section id="calculo-benchmarking-tab" class="tab-content active">
+        <div class="cost-section-card">
+            <h2 class="section-header-title">
+                <i class="fa-solid fa-brain"></i> ¿De dónde salen y cómo se calculan los precios del Benchmarking?
+            </h2>
+            <p class="section-description">
+                El análisis comparativo de benchmarking de Tecniempack no utiliza valores arbitrarios. Se fundamenta en un modelo dinámico de ingeniería financiera que pondera el costo directo de los polímeros (PEAD, PEBD, PP) junto con las variables macroeconómicas internacionales y el monitoreo directo de distribuidores y plantas tradicionales.
+            </p>
+
+            <div class="formula-box">
+                <strong>FÓRMULA BASE DE INDEXACIÓN PETROQUÍMICA Y PRECIO COMERCIAL:</strong><br>
+                1. Costo Ajustado (C_ajustado) = C_directo_base × [ 1 + Δ_TRM(USD/COP) + Δ_Volatilidad(WTI/Resinas) ]<br>
+                2. Precio Venta Tecniempack = C_ajustado / ( 1 - %_Margen_Banda )<br>
+                3. Índice de Benchmarking = ( Precio_Promedio_Competidores - Precio_Tecniempack ) / Precio_Promedio_Competidores × 100
+            </div>
+
+            <h3 style="color: var(--azul-tecno); margin-top: 1.5rem; font-size: 1.1rem;">Componentes Clave de la Ecuación de Cálculo:</h3>
+
+            <div class="explanation-grid">
+                <div class="explanation-card">
+                    <h4><i class="fa-solid fa-oil-well" style="color: var(--naranja-seguridad);"></i> 1. Costo Base de Materia Prima</h4>
+                    <p>Corresponde al costo directo de extrusión: resinas vírgenes/PCR (65%), aditivos, pigmentos, energía de planta e insumos flexográficos (tintas y clichés de impresión).</p>
+                </div>
+
+                <div class="explanation-card">
+                    <h4><i class="fa-solid fa-dollar-sign" style="color: var(--verde-eco);"></i> 2. Factor de Volatilidad (TRM / WTI)</h4>
+                    <p>Las resinas de polietileno cotizan en USD atadas al petróleo WTI. Si el dólar sube o el petróleo fluctúa, el <em>Factor de Ajuste Unificado (Δ)</em> reindexa el costo base manteniendo vigente la oferta entre 5 y 15 días.</p>
+                </div>
+
+                <div class="explanation-card">
+                    <h4><i class="fa-solid fa-shield-halved" style="color: var(--azul-tecno);"></i> 3. Bandas de Seguridad Comercial</h4>
+                    <p>Se aplica el margen objetivo según el cliente: <strong>Piso (20%-22%)</strong> para contratos corporativos de alto volumen, <strong>Pauta (28%-35%)</strong> para lotes regulares, y <strong>Techo (40%+)</strong> para desarrollos de bajo volumen.</p>
+                </div>
+
+                <div class="explanation-card">
+                    <h4><i class="fa-solid fa-magnifying-glass-chart" style="color: var(--azul-tecno);"></i> 4. Recolección de Datos de Competencia</h4>
+                    <p>Levantamiento de tarifas en zonas industriales y distribuidores de referencia (Fátima, La Pradera, 7 de Agosto) equiparando micraje/calibre real para evitar comparaciones engañosas.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; background: #FFFBEB; border: 1px solid #FCD34D; padding: 1.2rem; border-radius: 6px;">
+                <h4 style="color: #92400E; margin-bottom: 0.4rem; font-size: 0.95rem;">
+                    <i class="fa-solid fa-lightbulb"></i> Ventaja de la Transparencia en Benchmarking
+                </h4>
+                <p style="font-size: 0.88rem; color: #78350F; margin: 0;">
+                    Al desglosar la materia prima y el calibre real, demostramos a los directores de compras que las aparentes ofertas "más baratas" del mercado suelen esconder mermas en micraje o resinas de baja resistencia, mientras que Tecniempack garantiza cumplimiento normativo y rendimiento de sellado.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PESTAÑA 1: COSTOS Y PRECIOS DE TECNIEMPACK -->
+    <section id="costos-tab" class="tab-content">
+        <div class="cost-section-card">
+            <h2 class="section-header-title">
+                <i class="fa-solid fa-coins"></i> Estructura Interna de Costos y Precios Tecniempack
+            </h2>
+            <p class="section-description">
+                Desglose de precios calculados a partir de la matriz de costo base directo ajustado, clasificados según las 3 bandas del rango de seguridad operativa para proteger el margen sin generar fricción en el cliente.
+            </p>
+
+            <div class="data-table-container">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Referencia / Producto</th>
+                            <th>Costo Directo Base</th>
+                            <th>Banda de Seguridad</th>
+                            <th>% Margen (Sobre Venta)</th>
+                            <th>% Utilidad (Markup)</th>
+                            <th>Precio Comercial ($COP)</th>
+                            <th>Uso Comercial / Criterio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Bolsas Plásticas Camiseta 30x60</strong> (Millar)</td>
+                            <td>$59.500 COP</td>
+                            <td><span class="badge badge-piso">Piso Mínimo</span></td>
+                            <td>20.0%</td>
+                            <td>25.0%</td>
+                            <td class="price-tecniempack">$74.375 COP</td>
+                            <td>Descuento máximo por alto volumen corporativo / Contratos anuales</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bolsas Plásticas Camiseta 30x60</strong> (Millar)</td>
+                            <td>$59.500 COP</td>
+                            <td><span class="badge badge-pauta">Pauta Estándar</span></td>
+                            <td>30.0%</td>
+                            <td>42.9%</td>
+                            <td class="price-tecniempack">$85.000 COP</td>
+                            <td>Venta regular comercial en mostrador o lotes medianos B2B</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bolsas Plásticas Camiseta 30x60</strong> (Millar)</td>
+                            <td>$59.500 COP</td>
+                            <td><span class="badge badge-techo">Techo Máximo</span></td>
+                            <td>40.0%</td>
+                            <td>66.7%</td>
+                            <td class="price-tecniempack">$99.166 COP</td>
+                            <td>Desarrollos flexográficos personalizados / Lotes pequeños</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Stretch Film Industrial 50cm</strong> (Rollo)</td>
+                            <td>$23.040 COP</td>
+                            <td><span class="badge badge-pauta">Pauta Estándar</span></td>
+                            <td>28.0%</td>
+                            <td>38.9%</td>
+                            <td class="price-tecniempack">$32.000 COP</td>
+                            <td>Película extensible para paletizado de carga pesada</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bolsas de Basura Negras 24x32"</strong> (Paq x10)</td>
+                            <td>$2.275 COP</td>
+                            <td><span class="badge badge-pauta">Pauta Estándar</span></td>
+                            <td>35.0%</td>
+                            <td>53.8%</td>
+                            <td class="price-tecniempack">$3.500 COP</td>
+                            <td>Bolsas para residuos de alta resistencia en galgas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cintas Adhesivas Impresas</strong> (Caja x48)</td>
+                            <td>$136.500 COP</td>
+                            <td><span class="badge badge-pauta">Pauta Estándar</span></td>
+                            <td>35.0%</td>
+                            <td>53.8%</td>
+                            <td class="price-tecniempack">$210.000 COP</td>
+                            <td>Cerrado de cajas con marca corporativa personalizada</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- PESTAÑA 2: BENCHMARKING Y PRECIOS DE COMPETIDORES -->
+    <section id="competidores-tab" class="tab-content">
+        <div class="cost-section-card">
+            <h2 class="section-header-title">
+                <i class="fa-solid fa-balance-scale"></i> Comparativo de Mercado: Tecniempack vs. Competidores
+            </h2>
+            <p class="section-description">
+                Comparación directa entre las tarifas estándar de Tecniempack y los precios medios levantados en distribuidores de la plaza y plantas tradicionales de empaque.
+            </p>
+
+            <div class="data-table-container">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Departamento / Producto</th>
+                            <th>Precio Tecniempack (Estándar)</th>
+                            <th>Competidor A (Distribuidor)</th>
+                            <th>Competidor B (Planta Tradicional)</th>
+                            <th>Ventaja Competitiva Tecniempack</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Bolsas Basura Negras (Kilo)</strong></td>
+                            <td class="price-tecniempack">$8.000 / kg</td>
+                            <td class="price-competitor">$9.200 / kg</td>
+                            <td class="price-competitor">$8.500 / kg</td>
+                            <td>Resistencia garantizada al rasgado y calibre uniforme sin mermas.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bolsas Manigueta 5k (Paq x100)</strong></td>
+                            <td class="price-tecniempack">$5.000 / paq</td>
+                            <td class="price-competitor">$6.200 / paq</td>
+                            <td class="price-competitor">$5.500 / paq</td>
+                            <td>Polímero PEAD de alta densidad para mayor sellado de seguridad.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bolsas Cierre Hermético 8x10"</strong></td>
+                            <td class="price-tecniempack">$4.200 / paq</td>
+                            <td class="price-competitor">$5.000 / paq</td>
+                            <td class="price-competitor">$4.600 / paq</td>
+                            <td>Inviolabilidad y certificación de grado alimenticio / farmacéutico.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Stretch Film Transparente (Rollo)</strong></td>
+                            <td class="price-tecniempack">$32.000 / rollo</td>
+                            <td class="price-competitor">$36.500 / rollo</td>
+                            <td class="price-competitor">$34.000 / rollo</td>
+                            <td>Mayor memoria elástica y capacidad de retención de paletizado.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bolsas Papel Kraft 2lb (Paq x100)</strong></td>
+                            <td class="price-tecniempack">$4.500 / paq</td>
+                            <td class="price-competitor">$5.400 / paq</td>
+                            <td class="price-competitor">$4.800 / paq</td>
+                            <td>Línea ecoamigable con opción de impresión en tintas al agua.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- PESTAÑA 3: CATÁLOGO Y SERVICIOS CORPORATIVOS -->
+    <section id="catalogo-tab" class="tab-content">
+        <div class="filter-controls">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" onkeyup="filterServices()" placeholder="Buscar por material (PEBD, PP), producto o calibre...">
+            </div>
+            
+            <div class="sector-buttons">
+                <button class="btn-sector active" onclick="filterSector('todos', this)">Todos</button>
+                <button class="btn-sector" onclick="filterSector('alimentos', this)">Alimentos y Bebidas</button>
+                <button class="btn-sector" onclick="filterSector('farmaceutica', this)">Farmacéutica</button>
+                <button class="btn-sector" onclick="filterSector('logistica', this)">Logística</button>
+                <button class="btn-sector" onclick="filterSector('comercio', this)">Comercio y Retail</button>
+            </div>
+        </div>
+
+        <div class="services-grid" id="servicesGrid">
+            
+            <div class="service-card" data-sector="comercio alimentos" data-keywords="bolsas impresas camiseta pead pebd flexografia">
+                <div class="card-header">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <h3>Bolsas Plásticas e Impresión de Marca</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Fabricación e impresión flexográfica en alta definición de bolsas tipo camiseta, troqueladas y de sellado especial para posicionamiento publicitario corporativo.</p>
+                    <div class="card-tags">
+                        <span class="tag">PEAD / PEBD</span>
+                        <span class="tag">Flexografía 8 Tintas</span>
+                        <span class="tag">Comercio & Retail</span>
+                    </div>
+                    <button class="btn-modal" onclick="openModal('Bolsas Plásticas e Impresión de Marca', 'HDPE, LDPE, PP', '1.2 a 3.5 milas (micras ajustadas)', 'Flexografía de alta definición (hasta 8 tintas)', 'ISO 9001 / Conformidad de Inocuidad')">
+                        <i class="fa-solid fa-file-lines"></i> Ficha Técnica y Cotización
+                    </button>
+                </div>
+            </div>
+
+            <div class="service-card" data-sector="logistica" data-keywords="stretch film emplaye vinipel paletizado estibas">
+                <div class="card-header">
+                    <i class="fa-solid fa-box-open"></i>
+                    <h3>Película Extensible (Stretch Film)</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Rollos de película extensible de polietileno transparente y negro para contención, protección y emplaye de cargas pesadas en logística e industria.</p>
+                    <div class="card-tags">
+                        <span class="tag">LLDPE Extrusión</span>
+                        <span class="tag">Alta Elongación</span>
+                        <span class="tag">Logística</span>
+                    </div>
+                    <button class="btn-modal" onclick="openModal('Película Extensible (Stretch Film)', 'Polietileno Lineal de Baja Densidad (LLDPE)', 'Calibres 50, 60, 70, 80 micras', 'Transparente u Opaco Negro', 'Resistencia a la Punción ASTM D1709')">
+                        <i class="fa-solid fa-file-lines"></i> Ficha Técnica y Cotización
+                    </button>
+                </div>
+            </div>
+
+            <div class="service-card" data-sector="comercio farmaceutica" data-keywords="bolsas basura institucionales residuos reciclaje">
+                <div class="card-header">
+                    <i class="fa-solid fa-dumpster"></i>
+                    <h3>Bolsas Basura Institucionales</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Bolsas en rollo y paquete de gran capacidad para gestión de residuos industriales y código de colores normativo de reciclaje institucional.</p>
+                    <div class="card-tags">
+                        <span class="tag">Alta Capacidad</span>
+                        <span class="tag">Código de Colores</span>
+                        <span class="tag">Industria General</span>
+                    </div>
+                    <button class="btn-modal" onclick="openModal('Bolsas Basura Institucionales', 'Polietileno Reciclado / Virgen', 'Calibres pesados (2.0 - 4.0 milas)', 'Pigmentación Verde, Blanco, Negro, Rojo', 'Res. 1407 Gestión de Residuos')">
+                        <i class="fa-solid fa-file-lines"></i> Ficha Técnica y Cotización
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MODAL FICHA TÉCNICA -->
+    <div class="modal-overlay" id="techModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Ficha Técnica</h3>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>Especificaciones Técnicas del Polímero</h4>
+                <div class="tech-spec-grid">
+                    <div><strong>Material Base:</strong> <span id="modalMaterial">-</span></div>
+                    <div><strong>Rangos de Calibre:</strong> <span id="modalCalibre">-</span></div>
+                    <div><strong>Capacidad Impresión:</strong> <span id="modalImpresion">-</span></div>
+                    <div><strong>Certificaciones:</strong> <span id="modalNorma">-</span></div>
+                </div>
+
+                <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--gris-claro);">
+
+                <h4>Solicitar Cotización Corporativa</h4>
+                <form id="quoteForm" onsubmit="handleQuoteSubmit(event)">
+                    <div class="form-group">
+                        <label>Nombre de la Empresa / Razón Social *</label>
+                        <input type="text" required placeholder="Ej. Logística e Industria S.A.S.">
+                    </div>
+                    <div class="form-group">
+                        <label>Correo Electrónico Corporativo *</label>
+                        <input type="email" required placeholder="compras@empresa.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Volumen Estimado Requerido (Unidades / Kilos) *</label>
+                        <input type="text" required placeholder="Ej. 50.000 unidades o 500 kg">
+                    </div>
+                    <div class="form-group">
+                        <label>Adjuntar Arte / Logotipo para Impresión (Opcional)</label>
+                        <input type="file">
+                    </div>
+                    <button type="submit" class="btn-modal">
+                        <i class="fa-solid fa-paper-plane"></i> Enviar Solicitud a Asesoría Técnica
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MÓDULO DE CIERRE INSTITUCIONAL -->
+    <div class="cta-footer-banner">
+        <h4 style="color: var(--azul-tecno); font-size: 1.1rem; margin-bottom: 0.5rem;">
+            Respaldo e Infraestructura Industrial Tecniempack
+        </h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+            Conozca las capacidades de desarrollo, formulación de polímeros e ingeniería de empaque que ofrecemos al sector corporativo.
+        </p>
+        <a href="https://www.tecniempack.com" class="btn-inicio">
+            Explorar Soluciones Corporativas en Tecniempack.com <i class="fa-solid fa-arrow-right" style="color: var(--verde-eco);"></i>
+        </a>
+    </div>
+
+    <script>
+        // CAMBIO DE PESTAÑAS PRINCIPALES
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            element.classList.add('active');
+        }
+
+        // BÚSQUEDA Y FILTRADO DE SERVICIOS
+        function filterServices() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.querySelectorAll('.service-card');
+            
+            cards.forEach(card => {
+                let keywords = card.getAttribute('data-keywords').toLowerCase();
+                let text = card.innerText.toLowerCase();
+                if (keywords.includes(input) || text.includes(input)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterSector(sector, element) {
+            document.querySelectorAll('.btn-sector').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            
+            let cards = document.querySelectorAll('.service-card');
+            cards.forEach(card => {
+                let cardSectors = card.getAttribute('data-sector');
+                if (sector === 'todos' || cardSectors.includes(sector)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // MODAL INTERACTIVO
+        function openModal(title, material, calibre, impresion, norma) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalMaterial').innerText = material;
+            document.getElementById('modalCalibre').innerText = calibre;
+            document.getElementById('modalImpresion').innerText = impresion;
+            document.getElementById('modalNorma').innerText = norma;
+            
+            document.getElementById('techModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('techModal').style.display = 'none';
+        }
+
+        function handleQuoteSubmit(e) {
+            e.preventDefault();
+            alert('¡Gracias por su solicitud! Un especialista en ingeniería de empaque de Tecniempack evaluará sus requerimientos técnicos y se pondrá en contacto.');
+            closeModal();
+        }
+
+        window.onclick = function(event) {
+            let modal = document.getElementById('techModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
