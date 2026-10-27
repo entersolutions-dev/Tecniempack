@@ -1,12 +1,12 @@
-# Header de generación: 2026-10-26 21:36:00
-# Nombre: Workflow de despliegue optimizado para Enova Hosting via SSH/rsync
+# Header de generación: 2026-10-26 21:44:00
+# Nombre: Workflow de despliegue optimizado con depuración SSH para Enova Hosting
 
 name: Deploy Tecniempack CI/CD to Enova Hosting
 
 on:
   push:
     branches:
-      - main # Se dispara automáticamente al hacer push o commit en la rama main
+      - main
 
 jobs:
   deploy:
@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout del código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configurar llave SSH
         uses: shimataro/ssh-key-action@v2
@@ -24,11 +24,10 @@ jobs:
 
       - name: Sincronizar archivos vía rsync hacia Enova
         run: |
-          rsync -avz --delete \
+          rsync -avz --delete -e "ssh -p ${{ secrets.SERVER_PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -vvv" \
             --exclude='.git*' \
             --exclude='.github*' \
             --exclude='.venv*' \
             --exclude='node_modules*' \
             --exclude='*.py' \
-            -e "ssh -p ${{ secrets.SERVER_PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
             ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/${{ secrets.SERVER_USER }}/public_html/
